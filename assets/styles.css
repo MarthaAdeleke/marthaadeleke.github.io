@@ -1,3 +1,15 @@
+  /* Self-hosted so the pages need no third-party origin: fetching these from
+     Google cost two extra DNS lookups, connections and TLS handshakes before
+     any text could paint - seconds of it on a high-latency connection. One
+     variable file carries every weight the site uses. */
+  @font-face {
+    font-family: "Manrope";
+    src: url("fonts/manrope-latin.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   @font-face {
     font-family: "Kaneda Gothic";
     src: url("fonts/kaneda-gothic-bold.otf") format("opentype");
