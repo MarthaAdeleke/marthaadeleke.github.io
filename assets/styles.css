@@ -418,9 +418,11 @@
     width: 169.39759%; height: 146.11111%;
     left: 53.45783%; top: 56.66667%;
   }
+  /* This one's source is cropped to the window rather than scaled inside it:
+     at 374% only 6% of its pixels were ever visible, and it was 1.8MB of the
+     homepage's 2MB. The file now holds exactly what shows, so it fills. */
   .work__media--learnam img {
-    width: 374.61759%; height: 459.44444%;
-    left: 87.55422%; top: 60.55556%;
+    width: 100%; height: 100%;
   }
   .work__media--pharma img {
     width: 204.57831%; height: 176.94444%;
@@ -758,14 +760,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 14px;
-    height: 14px;
+    /* Square, because a rotated element keeps its pre-rotation footprint. */
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
   }
   .link-arrow img {
     display: block;
-    width: 7px;
-    height: 14px;
+    /* The same glyph size the buttons use. Drawn smaller it reads thinner,
+       since the arrow is a filled shape whose weight scales with it. */
+    width: 12.274px;
+    height: 24.545px;
     transform: rotate(-135deg);
     transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -1949,7 +1954,7 @@
       /* The hover underline sweep reads as a glitch on a full-width row. */
       background-image: none;
     }
-    .nav-panel .nav-cta { align-self: stretch; margin-top: 24px; }
+    .nav-panel .nav-cta { align-self: flex-start; margin-top: 24px; }
 
     /* Anchors have to clear the pinned bar. */
     section[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
@@ -2107,13 +2112,13 @@
     .footer__cta {
       order: 1;
       flex-direction: column;
-      align-items: stretch;
+      /* The blurb carries its own full width; the button hugs its label rather
+         than stretching the width of the screen. */
+      align-items: flex-start;
       gap: 24px;
     }
     /* .footer__cta turns column here, so the 362px basis would become a height. */
     .footer__blurb { flex: 0 0 auto; width: 100%; }
-    /* A full-width pill is the easiest target on a phone. */
-    .footer__cta .btn { align-self: stretch; }
 
     .footer__links {
       order: 2;
