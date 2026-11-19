@@ -74,7 +74,6 @@
   .nav-brand,
   .nav-toggle { display: none; }
 
-
   .nav-link {
     display: inline-flex;
     align-items: center;
@@ -867,7 +866,6 @@
     }
   }
 
-
   /* ---------- About page ---------- */
 
   .about {
@@ -1029,7 +1027,6 @@
     font-weight: 400;
   }
 
-
   /* ---------- Case study ---------- */
 
   .case {
@@ -1176,54 +1173,6 @@
      A full-width 480px band on ink. Children keep the exact pixel sizes Figma
      gives and are placed by their offset from the frame centre, so the
      composition holds whatever width the column ends up. */
-  .case-shot {
-    position: relative;
-    width: 100%;
-    height: 480px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--ink);
-  }
-  .case-shot > * {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    max-width: none;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-  .case-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .case-shot .shot-rounded { border-radius: 8px; overflow: hidden; }
-
-  /* The blurred plate behind every product shot. Needs to outrank the
-     `.case-shot img` sizing rule, hence the doubled selector. */
-  .case-shot img.shot-backdrop {
-    left: calc(50% + 68px);
-    top: calc(50% - 283px);
-    width: 1740px;
-    height: 1160px;
-    opacity: 0.3;
-    filter: blur(6px);
-  }
-
-  .case-shot--hero .shot-hero { left: calc(50% - 0.5px); top: calc(50% + 139px); width: 1147px; height: 858px; }
-
-  .case-shot--context .shot-web { left: calc(50% + 0.5px); top: 50%; width: 771px; height: 440px; }
-  .case-shot--context .shot-web img { height: 115.37%; top: -0.02%; position: absolute; left: 0; }
-
-  .case-shot--storelist .shot-web    { left: calc(50% - 109px); top: calc(50% - 0.97px); width: 606px; height: 438px; }
-  .case-shot--storelist .shot-web img { height: 103.44%; top: 0.02%; position: absolute; left: 0; }
-  .case-shot--storelist .shot-mobile { left: calc(50% + 310px); top: calc(50% - 0.47px); width: 202px; height: 437px; }
-
-  .case-shot--buyforme1 .shot-web    { left: calc(50% - 101px); top: calc(50% + 0.03px); width: 712px; height: 436px; }
-  .case-shot--buyforme1 .shot-mobile { left: calc(50% + 364px); top: calc(50% - 0.47px); width: 186px; height: 437px; }
-
-  .case-shot--buyforme2 .shot-web    { left: calc(50% - 101px); top: calc(50% - 0.97px); width: 698px; height: 436px; }
-  .case-shot--buyforme2 .shot-mobile { left: calc(50% + 357px); top: calc(50% - 0.47px); width: 186px; height: 437px; }
-
-  .case-shot--agent .shot-web        { left: calc(50% - 98.5px); top: calc(50% - 0.47px); width: 539px; height: 437px; }
-  .case-shot--agent .shot-mobile     { left: calc(50% + 277px); top: calc(50% - 0.47px); width: 180px; height: 437px; }
-  .case-shot--agent .shot-mobile img { height: 156.75%; top: 0; left: -0.02%; width: 100.05%; position: absolute; }
 
   /* --- Standalone figures (no ink plate) --- */
 
@@ -1453,7 +1402,6 @@
   .case-reflection p { width: 100%; }
   .case-reflection b { font-weight: 700; }
 
-
   /* --- Heroshe Website case study --- */
 
   /* This study runs a narrower contents rail than Procure. */
@@ -1486,6 +1434,72 @@
     height: auto;
     max-width: none;
   }
+  /* --- Procure: screen previews --- */
+
+  /* A desktop screen and a mobile one side by side on the sand plate. The flex
+     ratios are the frame's own pixel widths, so the pair divides the plate
+     exactly as drawn at any column width, and each screen keeps its 8px
+     rounding against the sand. */
+  .case-screens {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .case-screens > * {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .case-screens img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .case-screens--storelist > :first-child { flex: 739 1 0; aspect-ratio: 739 / 534; }
+  .case-screens--storelist > :last-child  { flex: 245 1 0; aspect-ratio: 245 / 532; }
+  .case-screens--buyforme  > :first-child { flex: 780 1 0; aspect-ratio: 780 / 478; }
+  .case-screens--buyforme  > :last-child  { flex: 203 1 0; aspect-ratio: 203 / 477; }
+  .case-screens--buyforme2 > :first-child { aspect-ratio: 780 / 488; }
+  .case-screens--buyforme2 > :last-child  { aspect-ratio: 203 / 488; }
+  .case-screens--agent     > :first-child { flex: 737 1 0; aspect-ratio: 737 / 598; }
+  .case-screens--agent     > :last-child  { flex: 246 1 0; aspect-ratio: 246 / 597; }
+
+  /* The agent's mobile screen is the one the frame crops hard - it shows the
+     top 64% of a tall capture - so it is placed rather than covered. */
+  .case-screens--agent > :last-child img {
+    position: absolute;
+    left: -0.02%;
+    top: 0;
+    width: 100.05%;
+    height: 156.75%;
+    object-fit: fill;
+  }
+
+  /* A single screen filling the plate. --journey carries the frame's crop: the
+     capture is wider and taller than the band it is shown in. */
+  .case-screen {
+    /* A span by default, so it needs this before width or aspect-ratio apply -
+       without it the cropped journey plate collapses to its padding. */
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .case-screen img { display: block; width: 100%; height: auto; }
+  .case-screen--journey { aspect-ratio: 1000 / 317; }
+  .case-screen--journey img {
+    position: absolute;
+    left: -3.25%;
+    top: -41%;
+    width: 103.25%;
+    height: 141%;
+  }
+
   .case-plate__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2074,26 +2088,6 @@
     /* The bands compose a desktop shot beside a phone shot at fixed pixel sizes
        and fixed offsets from centre. Neither survives a narrow column, so on
        phones the band shows the desktop shot centred and drops the phone one. */
-    .case-shot { height: auto; aspect-ratio: 960 / 480; }
-    .case-shot .shot-mobile { display: none; }
-    .case-shot img.shot-backdrop { left: 50%; top: 50%; width: 160%; height: 160%; }
-    .case-shot--hero .shot-hero,
-    .case-shot--context .shot-web,
-    .case-shot--storelist .shot-web,
-    .case-shot--buyforme1 .shot-web,
-    .case-shot--buyforme2 .shot-web,
-    .case-shot--agent .shot-web {
-      left: 50%;
-      top: 50%;
-      width: auto;
-      height: 84%;
-    }
-    .case-shot--hero .shot-hero      { width: 118%; height: auto; aspect-ratio: 1147 / 858; }
-    .case-shot--context .shot-web    { aspect-ratio: 771 / 440; }
-    .case-shot--storelist .shot-web  { aspect-ratio: 606 / 438; }
-    .case-shot--buyforme1 .shot-web  { aspect-ratio: 712 / 436; }
-    .case-shot--buyforme2 .shot-web  { aspect-ratio: 698 / 436; }
-    .case-shot--agent .shot-web      { aspect-ratio: 539 / 437; }
 
     .next-case { gap: 32px; padding: 96px var(--gutter); }
     .next-case__title { font-size: min(160px, calc((100vw - 2 * var(--gutter)) * 0.125)); }
@@ -2144,7 +2138,6 @@
       font-size: min(240px, calc((100vw - 2 * var(--gutter) - 40px) / 4.19));
     }
 
-
     /* The impact pair is drawn 2-up and above 900 there is room for it, which
        beats two capped boxes stacked. Height follows the text at this width.
        Narrower than that it stays stacked, as a half column would be unreadable. */
@@ -2158,6 +2151,26 @@
   }
 
   @media (max-width: 700px) {
+    /* A desktop screen and a mobile one sharing a 318px plate would be about
+       235 and 78px across, the second unreadable. The pair scrolls at a legible
+       height instead, the same as the phone rows on the other case studies.
+       Each box keeps its aspect-ratio, so its width follows the height. */
+    .case-screens {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+    }
+    /* Matching the per-row rules' specificity, which pin the flex ratios with
+       :first-child / :last-child - a bare `> *` loses to them and the screens
+       go on sharing the plate instead of taking their own width. */
+    .case-screens > :first-child,
+    .case-screens > :last-child {
+      flex: 0 0 auto;
+      height: 360px;
+      width: auto;
+      scroll-snap-align: center;
+    }
+
     .headline {
       flex-direction: column;
       align-items: flex-start;
