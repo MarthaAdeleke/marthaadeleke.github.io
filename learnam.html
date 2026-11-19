@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Making Skills Training Easier to Start: LearnAM — Martha Adeleke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="nav-brand" href="index.html">Martha Adeleke</a>
+    <button class="nav-toggle" type="button" aria-expanded="false"
+            aria-controls="nav-panel" aria-label="Open menu">
+      <span class="nav-toggle__box" aria-hidden="true">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </span>
+    </button>
+    <div class="nav-panel" id="nav-panel">
+      <nav class="nav-menu">
+        <a class="nav-link" href="index.html#work" aria-current="page">Work</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="index.html#field-notes">Field Notes</a>
+        <a class="nav-link" href="about.html#resume">Resume</a>
+      </nav>
+      <a class="btn nav-cta" href="mailto:marthaadeleke@gmail.com">
+        <span class="btn__label" aria-live="polite">Email Me</span>
+        <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="case">
+    <nav class="case-toc case-toc--narrow" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#my-role">My Role</a>
+      <a href="#discovery">Discovery</a>
+      <a href="#findings">What We Found</a>
+      <a href="#acted-on">What We Chose to Act On</a>
+      <a href="#redesign">The Redesign</a>
+      <a href="#outcome">Outcome</a>
+      <a href="#beyond">Beyond the App</a>
+      <a href="#next-steps">What I’d Explore Next</a>
+    </nav>
+
+    <div class="case-body">
+      <section class="case-section case-intro" id="overview">
+        <div class="case-head">
+          <h1 class="case-title">Making Skills Training Easier to Start: LearnAM</h1>
+          <div class="case-prose case-prose--16 case-prose--spaced">
+            <p>In sub-Saharan Africa, most young people work, but 3 in 4 lack secure work, and more than one in five are not in employment, education or training. LearnAM offers professional and vocational courses to help young people build skills for steadier work or grow the trades they already have. (International Labour Organization, <a class="case-link-inline" href="https://www.ilo.org/publications/global-employment-trends-youth-2024" target="_blank" rel="noopener noreferrer">Global Employment Trends for Youth 2024</a>.)</p>
+            <p>When I joined in May 2021, the team had just launched a KaiOS MVP for feature phones, but few people were signing up and those who did weren’t staying engaged. Over the next 13 months, we researched why and redesigned the Android and iOS apps. After launch, alongside a new awareness campaign, downloads rose by about 50%.</p>
+          </div>
+        </div>
+
+        <figure class="case-plate" data-reveal="rise">
+          <img src="assets/la-hero.png" alt="The redesigned LearnAM app across several screens">
+        </figure>
+      </section>
+
+      <section class="case-section" id="my-role">
+        <h2 class="case-h2">My role</h2>
+        <div class="case-prose case-prose--16">
+          <p>I was the product designer for the Android and iOS apps, working with two researchers, a product manager and three engineers. I joined our researchers on the field studies and contributed to synthesising the usability findings. I also built the design system for ScholarX, LearnAM’s parent company, by adapting The Designership’s design system kit, and we used it to build the final version of the app. Outside the app, I designed LearnAM’s marketing materials, which are covered at the end of this case study.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="discovery">
+        <h2 class="case-h2">Discovery</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg case-prose--loose case-prose--spaced">
+            <p>We began with a two-week design sprint. We audited the existing app and held an alignment workshop, where we wrote four draft personas and listed our assumptions about how people would use the product.</p>
+            <p>We then tested those assumptions through field studies and unmoderated usability tests with 20 people. We watched their first impressions, how they signed up, and how they found their way around the app. We also asked about the content and the ways they preferred to learn.</p>
+          </div>
+
+          <figure class="case-plate" data-reveal="rise">
+            <div class="case-plate__grid">
+              <div class="case-crop" style="aspect-ratio:494/280">
+                <img src="assets/la-204.png" alt="Draft personas from the alignment workshop" style="width:100%;height:109.49%;top:-4.66%">
+              </div>
+              <div class="case-crop" style="aspect-ratio:494/280">
+                <img src="assets/la-205.png" alt="Assumptions mapped in the workshop" style="width:100%;height:100.1%;top:0">
+              </div>
+              <div class="case-crop" style="aspect-ratio:494/303">
+                <img src="assets/la-206.png" alt="Field study notes" style="width:100.11%;height:102.97%;left:-0.06%;top:-2.82%">
+              </div>
+              <div class="case-crop" style="aspect-ratio:494/303">
+                <img src="assets/la-207.png" alt="Usability test synthesis" style="width:110.38%;height:113.53%;left:-5.19%;top:-6.88%">
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="findings">
+        <h2 class="case-h2">What we found</h2>
+        <ul class="case-points-list case-points-list--tight">
+          <li><b>Signing up was harder than it looked:</b> Many people needed help with the sign-up form. Reading difficulties, vision problems, and confusion about passwords made them unsure of themselves.</li>
+          <li><b>People want to learn in their own language, but don’t say so at first:</b> When asked, most people chose English, because it felt formal and “proper.” When we asked further, many said they’d prefer to learn in their first language.</li>
+          <li><b>Our labels didn’t match what people were looking for:</b> Some people wanted to learn how to use Facebook and WhatsApp for their businesses, but they never found those courses because they didn’t think of them as “Digital Marketing.”</li>
+          <li><b>There were two different kinds of users:</b> Some wanted to strengthen a trade they already had. Others wanted professional skills and certificates for future jobs. The app treated them the same, so neither group was sure how to use it.</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="acted-on">
+        <h2 class="case-h2">What we chose to act on</h2>
+        <div class="case-prose case-prose--lg case-prose--loose">
+          <p>We looked at the four findings alongside what engineering could build in the next release, and acted on all of them:</p>
+          <ul class="case-points-list">
+            <li>We shortened sign-up.</li>
+            <li>Let people choose a learning language separately from the app’s language</li>
+            <li>Made course previews shorter and clearer</li>
+            <li>Created separate paths for vocational and professional learners</li>
+          </ul>
+          <p>One idea didn’t make it into the release. I designed an audio guide that read each sign-up step aloud, for people who found forms hard to read, but engineering couldn’t support it in time, so it was left out.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="redesign">
+        <h2 class="case-h2">The redesign</h2>
+
+        <div class="case-solutions">
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Simpler sign-up:</b> The KaiOS MVP asked for about ten fields across two screens, including gender, state and highest education, before anyone could start a course. The first version of the mobile app opened with a plain language list, then a form with six fields. In the field studies, many people still needed help to finish it. The final version asks for four: full name, phone number or email, an optional referral code and a password. We kept the password to keep accounts secure, and added a show/hide toggle so people could check what they had typed.</li>
+            </ul>
+
+            <figure class="case-plate" data-reveal="rise">
+              <div class="lam-compare lam-compare--tight">
+                <div class="lam-stage">
+                  <div class="lam-shots lam-shots--top">
+                    <img src="assets/la-228.png" alt="KaiOS sign-up, first screen" style="width:99px">
+                    <img src="assets/la-229.png" alt="KaiOS sign-up, second screen" style="width:99px">
+                  </div>
+                  <p class="lam-caption"><b>KAIOS MVP</b><span style="width:124px">About 10 fields across two screens</span></p>
+                </div>
+                <span class="lam-arrow"><img src="assets/arrow-step.svg" alt=""></span>
+                <div class="lam-stage">
+                  <div class="lam-shots">
+                    <img src="assets/la-230.png" alt="First app version, language list" style="width:159px">
+                    <img src="assets/la-231.png" alt="First app version, six-field form" style="width:159px">
+                  </div>
+                  <p class="lam-caption"><b>FIRST APP VERSION</b><span style="width:136px">A plain language list, then 6 fields with a password</span></p>
+                </div>
+                <span class="lam-arrow"><img src="assets/arrow-step.svg" alt=""></span>
+                <div class="lam-stage">
+                  <div class="lam-shots">
+                    <img src="assets/la-232.png" alt="Final version, learning language step" style="width:160px">
+                    <img src="assets/la-233.png" alt="Final version, four-field form" style="width:160px">
+                  </div>
+                  <p class="lam-caption"><b>FINAL VERSION</b><span style="width:194px">Choose a learning language, then 4 fields (audio guide designed, not shipped)</span></p>
+                </div>
+              </div>
+            </figure>
+
+            <p class="case-lead">The language step still comes first, but we reframed it: people now choose their learning language, with a note that their courses will appear in it. In our interviews, people said “English” at first, but many preferred to learn in their first language.</p>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Separate paths for two kinds of learners:</b> After signing up, people answer one question: how do they want to use LearnAM? They can take a course to earn a certificate, for job hunting, or learn and practise vocational skills, for earning their own income. They then pick the topics they’re interested in, such as Digital Marketing, Business or Finance, so the app can show courses that match their goals. Someone building a trade and someone working towards a certificate no longer start with the same list.</li>
+            </ul>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/la-237.png" alt="Choosing how to use LearnAM">
+                <img src="assets/la-236.png" alt="Picking topics of interest">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Shorter and clearer course previews:</b> In the first version, tapping a course opened a full page with a long, general description, so people had to read a lot before they knew whether a course was for them. The final version groups courses under topics people recognise, such as Digital Marketing and Career Development. Tapping one opens a short summary of what the course covers, with the choice to preview it or enroll.</li>
+            </ul>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="lam-compare">
+                <div class="lam-stage">
+                  <div class="lam-shots">
+                    <img src="assets/la-243.png" alt="First version, category tiles" style="width:180px">
+                    <img src="assets/la-239.png" alt="First version, long course page" style="width:180px">
+                  </div>
+                  <p class="lam-caption"><b>FIRST APP VERSION</b><span style="width:141px">Three broad categories, then a long course page</span></p>
+                </div>
+                <span class="lam-arrow"><img src="assets/arrow-step.svg" alt=""></span>
+                <div class="lam-stage">
+                  <div class="lam-shots">
+                    <img src="assets/la-240.png" alt="Final version, courses grouped by topic" style="width:180px">
+                    <img src="assets/la-241.png" alt="Final version, short course summary" style="width:180px">
+                  </div>
+                  <p class="lam-caption"><b>FINAL VERSION</b><span style="width:173px">Courses grouped by topic, with a short summary before enrolling</span></p>
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Clearer navigation:</b> The KaiOS MVP worked through keypad lists: three broad categories (Digital, Vocational and Personal development), then a list of courses. The first version of the mobile app kept those three categories as large tiles and put Profile and Settings in a side menu behind a hamburger icon. The final version replaces the side menu with a bottom tab bar (Home, Learning and Settings), so the main places are always one tap away. Home opens with a search bar asking “What do you want to learn today?”, and courses are grouped by topics people recognise, such as Social Media, Device Management and Career Development, instead of three broad categories. The Learning tab is where people return to courses they’ve started and see how far they’ve got.</li>
+            </ul>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="lam-compare">
+                <div class="lam-stage">
+                  <div class="lam-shots">
+                    <img src="assets/la-244.png" alt="First version, side menu navigation" style="width:159px">
+                  </div>
+                  <p class="lam-caption"><b>FIRST APP VERSION</b><span style="width:141px">Three broad categories, then a long course page</span></p>
+                </div>
+                <span class="lam-arrow"><img src="assets/arrow-step.svg" alt=""></span>
+                <div class="lam-stage">
+                  <div class="lam-shots">
+                    <img src="assets/la-240.png" alt="Final version, home with search" style="width:180px">
+                    <img src="assets/la-245.png" alt="Final version, topic groups" style="width:180px">
+                    <img src="assets/la-247.png" alt="Final version, Learning tab" style="width:180px">
+                  </div>
+                  <p class="lam-caption"><b>FINAL VERSION</b><span style="width:173px">Courses grouped by topic, with a short summary before enrolling</span></p>
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>A shared design system:</b> We built the final version of the app on the design system I adapted for ScholarX, LearnAM’s parent company. It was organised into atoms, molecules and organisms, and covered colour (a navy primary, a yellow secondary and a full neutral scale), a Mulish type scale, an 8pt spacing grid, outline and filled icons, and components such as buttons in four sizes and states, alerts and form fields. This kept the redesigned screens consistent and gave engineering ready-made parts to build from.</li>
+            </ul>
+            <figure class="lam-figure" data-reveal="rise">
+              <img src="assets/la-design-system.png" alt="The ScholarX design system: colour, type scale, spacing, icons and components">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="outcome">
+        <h2 class="case-h2">Outcome</h2>
+        <p class="case-lead case-lead--tight">After the redesign launched, alongside a new awareness campaign, downloads rose by about 50%. Usage grew too, but unevenly. Active use went up and down, which told us that getting people to start was only part of the problem. Keeping them coming back needed more work.</p>
+      </section>
+
+      <section class="case-section" id="beyond">
+        <h2 class="case-h2">Beyond the app</h2>
+        <div class="case-stack">
+          <p class="case-lead case-lead--tight">Alongside the product work, I designed LearnAM’s marketing materials, including posters, billboards and roll-up banners, to support the team’s awareness campaigns. The billboards spoke the way our users do, with a Pidgin headline and a Yoruba tagline, and pointed people to both the Google Play Store and the KaiOS store. One stood across from the Cathedral Church of Christ in Marina, Lagos.</p>
+          <figure class="lam-figure" data-reveal="rise">
+            <img src="assets/la-billboards.jpg" alt="LearnAM billboards and posters in Lagos">
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="next-steps">
+        <h2 class="case-h2">What I’d explore next</h2>
+        <div class="case-prose case-prose--lg case-prose--flush">
+          <p>The audio guide is the piece I’d return to first. It was the clearest response to what we saw in the field, and it didn’t make it into the release. Next time, I’d work through feasibility with engineering earlier, so that accessibility features are planned into a release instead of cut from it.</p>
+          <p>I’d also focus on keeping people coming back, since active use stayed uneven after launch. And I’d test the redesign with users after launch, because our usability testing happened before the changes, not after.</p>
+          <p>This project taught me how much a team learns when research, product and engineering work through the findings together, instead of design handing over finished screens.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="next-case">
+    <h2 class="next-case__title"><span data-reveal="mask">NEXT CASE STUDY</span></h2>
+
+    <article class="work work--next" data-reveal="rise">
+      <div class="work__col">
+        <p class="work__client">Scape Health</p>
+        <p class="work__name">A digital product for reducing long hospital wait times.</p>
+        <div class="work__tags">
+          <span class="tag">Healthtech</span>
+          <span class="tag">Appointment Booking</span>
+          <span class="tag">Research</span>
+          <span class="tag">Product Concept</span>
+        </div>
+      </div>
+      <div class="work__body">
+        <p>Designed a healthcare experience to help patients book appointments, manage hospital visits, and reduce avoidable waiting.</p>
+        <a class="btn btn--case" href="scape-health.html">
+          View Case Study
+          <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+        </a>
+      </div>
+      <figure class="work__media work__media--scape">
+        <img src="assets/work-scape-health.jpg" alt="Scape Health appointment booking app screens">
+      </figure>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <div class="footer__main">
+        <div class="footer__cta" data-reveal="rise">
+          <p class="footer__blurb">Available for product design and UX strategy roles where research, product thinking, and business impact matter.</p>
+          <a class="btn" href="mailto:marthaadeleke@gmail.com">
+            <span class="btn__label" aria-live="polite">Email Me</span>
+            <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+          </a>
+        </div>
+        <div class="footer__wordmark" data-stagger><span data-reveal="mask">MARTHA</span><span data-reveal="mask">ADELEKE</span></div>
+      </div>
+
+      <nav class="footer__links" data-reveal="rise">
+        <a href="https://www.linkedin.com/in/martha-adeleke/" target="_blank" rel="noopener noreferrer">LINKEDIN<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+        <a href="https://medium.com/@marthaadeleke" target="_blank" rel="noopener noreferrer">MEDIUM<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+      </nav>
+    </div>
+  </footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

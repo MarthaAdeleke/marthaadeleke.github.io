@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Booking a Doctor Without Losing a Day: Scape Health — Martha Adeleke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="nav-brand" href="index.html">Martha Adeleke</a>
+    <button class="nav-toggle" type="button" aria-expanded="false"
+            aria-controls="nav-panel" aria-label="Open menu">
+      <span class="nav-toggle__box" aria-hidden="true">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </span>
+    </button>
+    <div class="nav-panel" id="nav-panel">
+      <nav class="nav-menu">
+        <a class="nav-link" href="index.html#work" aria-current="page">Work</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="index.html#field-notes">Field Notes</a>
+        <a class="nav-link" href="about.html#resume">Resume</a>
+      </nav>
+      <a class="btn nav-cta" href="mailto:marthaadeleke@gmail.com">
+        <span class="btn__label" aria-live="polite">Email Me</span>
+        <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="case">
+    <nav class="case-toc case-toc--narrow" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#discovery">Discovery</a>
+      <a href="#findings">What I Found</a>
+      <a href="#constraint">The Bigger Constraint</a>
+      <a href="#choosing">Choosing What to Build</a>
+      <a href="#decisions">Key Design Decisions</a>
+      <a href="#testing">What Testing Showed</a>
+      <a href="#next-steps">What I’d Do Next</a>
+    </nav>
+
+    <div class="case-body">
+      <section class="case-section case-intro" id="overview">
+        <div class="case-head">
+          <h1 class="case-title">Booking a Doctor Without Losing a Day: Scape Health</h1>
+          <div class="case-prose case-prose--16 case-prose--spaced">
+            <p>Every time I needed to see a doctor, it took most of the day: the trip to the hospital, a queue to open a file and book an appointment, then a second queue at the outpatient department.</p>
+            <p>Scape Health is a concept I created to explore that problem, starting in Ogun State. I interviewed four patients and a doctor, designed a mobile booking flow for patients, and tested it with six users. It wasn’t launched, so this case study covers the research, the decisions and what testing showed.</p>
+          </div>
+        </div>
+
+        <figure class="case-plate case-plate--row" data-reveal="rise">
+          <div class="case-phones case-phones--quad">
+            <img src="assets/sh-hero-1.png" alt="Scape Health splash screen">
+            <img src="assets/sh-hero-2.png" alt="Onboarding screen introducing quick access to doctors">
+            <img src="assets/sh-hero-3.png" alt="Account sign-up screen">
+            <img src="assets/sh-hero-4.png" alt="Home screen listing top doctors and wellness articles">
+          </div>
+        </figure>
+      </section>
+
+      <section class="case-section" id="discovery">
+        <h2 class="case-h2">Discovery</h2>
+        <div class="case-prose case-prose--16">
+          <p>I started with two assumptions: most people find hospital visits stressful enough to put them off, and the answer would be some kind of digital tool. To test them, I interviewed four patients, two who mainly use public hospitals and two who use private ones, plus a doctor. I also reviewed research on online appointment booking in Nigerian teaching hospitals and looked at existing services, including Evercare, Reliance HMO and Vezeeta.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="findings">
+        <h2 class="case-h2">What I found</h2>
+        <div class="case-stack">
+          <div class="case-finding">
+            <ul class="case-points-list">
+              <li><b>A hospital visit takes the whole day:</b> Participants spent 3 to 5 hours per visit, and some spent up to 6. People who work have to ask for time off, and most are too tired afterwards to do anything else.</li>
+            </ul>
+            <blockquote class="case-card">
+              <p>“Visiting the hospital is a stressful and time-consuming process that requires me to seek permission from work, and I always have to wake up very early to ensure I see the doctor on time. At the hospital, I often have to wait for several hours to see the doctor, and then I have to join a separate queue at the doctor’s office.” — Participant, creative writer</p>
+            </blockquote>
+          </div>
+
+          <div class="case-finding">
+            <ul class="case-points-list">
+              <li><b>People avoid the hospital when they can:</b> For mild illnesses, they go to a chemist, ask friends who work in healthcare, or message a doctor through their HMO on WhatsApp.</li>
+            </ul>
+            <blockquote class="case-card">
+              <p>“I don’t like to visit the hospital at all, the waiting takes the most time. I go to the chemist for drugs if the condition is mild and speak to friends in the medical field if the ailment is severe.” — Participant, product manager</p>
+            </blockquote>
+          </div>
+
+          <ul class="case-points-list">
+            <li><b>Paper records slow everything down:</b> Two participants suggested digital patient records on their own, so they wouldn’t have to repeat their history at every visit.</li>
+            <li><b>Not everyone is comfortable with technology:</b> One participant wanted booking to be digital but worried that older patients would struggle with it.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section" id="constraint">
+        <h2 class="case-h2">The bigger constraint</h2>
+        <div class="case-prose case-prose--lg">
+          <p>Booking turned out to be only part of the problem. Government hospitals are also short of doctors and resources, so no app could fix the wait on its own. The services that had made progress did it through insurance and access to nearby hospitals, not by changing how public hospitals work. I nearly stopped there. Instead, I decided to design for when the conditions are in place, starting with the part a product can fix.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="choosing">
+        <h2 class="case-h2">Choosing what to build</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg">
+            <p>I ranked the needs from the research using MoSCoW and checked each for feasibility, desirability and viability:</p>
+          </div>
+          <ul class="case-points-list">
+            <li><b>Must have:</b> a simpler way to book appointments</li>
+            <li><b>Should have:</b> more affordable care and insurance</li>
+            <li><b>Could have:</b> health education</li>
+            <li><b>Won’t have:</b> more doctors, which a product can’t solve</li>
+          </ul>
+          <div class="case-prose case-prose--lg">
+            <p>I also compared booking with virtual consultations. My original goal was to see a doctor without leaving home, but virtual care would need hospitals to change more than they currently can. Booking saves patients the most time and asks the least of hospitals, so it came first. Telemedicine would follow.</p>
+          </div>
+          <figure class="case-figure" data-reveal="rise">
+            <img src="assets/sh-priority.png" alt="Prioritisation board: the MoSCoW ranking beside three directions compared on feasibility, desirability and viability, with appointment booking built first">
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="decisions">
+        <h2 class="case-h2">Key design decisions</h2>
+        <div class="case-decisions case-decisions--spaced">
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Start from what’s near and what’s next:</b> The home screen shows nearby doctors and the patient’s upcoming appointment, the two things people need most when they open the app.</li>
+            </ul>
+            <figure class="case-plate case-plate--phones" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/sh-home-1.png" alt="Home screen with the next appointment and nearby doctors">
+                <img src="assets/sh-home-2.png" alt="Searching for a doctor by name">
+                <img src="assets/sh-home-3.png" alt="Search results listing general practitioners">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Help people trust a doctor they’ve never met:</b> Doctor profiles show qualifications, experience and reviews from other patients, because people hesitated to book with someone they knew nothing about.</li>
+            </ul>
+            <figure class="case-plate case-plate--phones" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/sh-trust-1.png" alt="Doctor profile with specialty and location">
+                <img src="assets/sh-trust-2.png" alt="Doctor profile showing experience and qualifications">
+                <img src="assets/sh-trust-3.png" alt="Reviews from other patients on a doctor’s profile">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Show real availability before booking:</b> Patients see a doctor’s open time slots and pick one, instead of turning up and joining a queue.</li>
+            </ul>
+            <figure class="case-plate case-plate--phones" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/sh-slots-1.png" alt="Checking a doctor’s availability by date and time">
+                <img src="assets/sh-slots-2.png" alt="Reviewing the appointment details before confirming">
+                <img src="assets/sh-slots-3.png" alt="Appointment confirmation screen">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <ul class="case-points-list">
+              <li><b>Make appointments easy to manage:</b> Patients can see upcoming and past appointments, reschedule, and get reminders.</li>
+            </ul>
+            <figure class="case-plate case-plate--phones" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/sh-manage-1.png" alt="List of upcoming appointments">
+                <img src="assets/sh-manage-2.png" alt="Appointment options including reschedule">
+                <img src="assets/sh-manage-3.png" alt="Cancelling an appointment">
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="testing">
+        <h2 class="case-h2">What testing showed</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg">
+            <p>I tested the MVP with six users. Most found booking easy, but the tests showed five things to change:</p>
+          </div>
+          <ul class="case-points-list case-points-list--tight case-points-list--sm">
+            <li><b>Messaging a doctor first:</b> People wanted to describe their symptoms before booking, to find out whether they needed to come in at all.</li>
+            <li><b>Finding their profile:</b> Users struggled to find where to update their details.</li>
+            <li><b>Seeing hospitals on a map:</b> People in unfamiliar areas wanted to see where a hospital was before booking.</li>
+            <li><b>Wellness articles:</b> Most ignored them, and those who read them questioned whether they were reliable.</li>
+            <li><b>A calendar for availability:</b> Scrolling through time slots felt slow, and people preferred a calendar view.</li>
+          </ul>
+          <figure class="case-figure" data-reveal="rise">
+            <img src="assets/sh-testing.png" alt="Usability test summary: what worked beside the five findings to change, each tagged next step, fix, add or remove">
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="next-steps">
+        <h2 class="case-h2">What I’d do next</h2>
+        <div class="case-prose case-prose--lg">
+          <p>Messaging was in my very first sketch of this idea, and my ideation list included in-app messaging and telemedicine. I left them out of the MVP to focus on booking, and messaging came back as the most common request in testing. That matches what participants already do: they message a doctor on WhatsApp to decide whether they need to go in at all. A short message or triage step before booking would be my next step. I’d also add the calendar view and the map, make the profile easier to find, and either remove the wellness articles or have clinicians write them. Booking only works if doctors’ availability stays up to date, so I’d want to design the hospital side next.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="next-case">
+    <h2 class="next-case__title"><span data-reveal="mask">NEXT CASE STUDY</span></h2>
+
+    <article class="work work--next" data-reveal="rise">
+      <div class="work__col">
+        <p class="work__client">Heroshe</p>
+        <p class="work__name">Supplier Discovery &amp; Procurement</p>
+        <div class="work__tags">
+          <span class="tag">B2B</span>
+          <span class="tag">Procurement</span>
+          <span class="tag">Web App</span>
+        </div>
+      </div>
+      <div class="work__body">
+        <p>Designed a supplier discovery and assisted buying experience that helps businesses source products faster and with less operational friction.</p>
+        <a class="btn btn--case" href="procure.html">
+          View Case Study
+          <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+        </a>
+      </div>
+      <figure class="work__media work__media--procurement">
+        <img src="assets/work-heroshe-procurement.jpg" alt="Heroshe supplier discovery dashboard on a laptop">
+      </figure>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <div class="footer__main">
+        <div class="footer__cta" data-reveal="rise">
+          <p class="footer__blurb">Available for product design and UX strategy roles where research, product thinking, and business impact matter.</p>
+          <a class="btn" href="mailto:marthaadeleke@gmail.com">
+            <span class="btn__label" aria-live="polite">Email Me</span>
+            <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+          </a>
+        </div>
+        <div class="footer__wordmark" data-stagger><span data-reveal="mask">MARTHA</span><span data-reveal="mask">ADELEKE</span></div>
+      </div>
+
+      <nav class="footer__links" data-reveal="rise">
+        <a href="https://www.linkedin.com/in/martha-adeleke/" target="_blank" rel="noopener noreferrer">LINKEDIN<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+        <a href="https://medium.com/@marthaadeleke" target="_blank" rel="noopener noreferrer">MEDIUM<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+      </nav>
+    </div>
+  </footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

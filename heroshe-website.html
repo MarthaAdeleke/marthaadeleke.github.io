@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heroshe: Repositioning a shipping company as a global commerce platform — Martha Adeleke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="nav-brand" href="index.html">Martha Adeleke</a>
+    <button class="nav-toggle" type="button" aria-expanded="false"
+            aria-controls="nav-panel" aria-label="Open menu">
+      <span class="nav-toggle__box" aria-hidden="true">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </span>
+    </button>
+    <div class="nav-panel" id="nav-panel">
+      <nav class="nav-menu">
+        <a class="nav-link" href="index.html#work" aria-current="page">Work</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="index.html#field-notes">Field Notes</a>
+        <a class="nav-link" href="about.html#resume">Resume</a>
+      </nav>
+      <a class="btn nav-cta" href="mailto:marthaadeleke@gmail.com">
+        <span class="btn__label" aria-live="polite">Email Me</span>
+        <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="case">
+    <nav class="case-toc case-toc--narrow" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#context">Context</a>
+      <a href="#problem">The Problem</a>
+      <a href="#goals">Goals</a>
+      <a href="#audiences">Who The Site Served</a>
+      <a href="#how-we-worked">How We Worked</a>
+      <a href="#market">The Market</a>
+      <a href="#decisions">Key Design Decisions</a>
+      <a href="#webflow">Building in Webflow</a>
+      <a href="#next">What Happened Next</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+
+    <div class="case-body">
+      <section class="case-section case-intro" id="overview">
+        <div class="case-head">
+          <h1 class="case-title">Heroshe: Repositioning a shipping company as a global commerce platform</h1>
+          <p class="case-intro__text">Heroshe has since ceased operations and the original site is offline. The live link is a faithful rebuild of my design, recreated for this portfolio.</p>
+          <a class="case-textlink" href="https://heroshe-website.webflow.io/" target="_blank" rel="noopener noreferrer">
+            View The Site
+            <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+          </a>
+        </div>
+
+        <div class="case-intro__media">
+          <figure class="case-plate" data-reveal="rise">
+            <img src="assets/hw-hero.png" alt="The redesigned Heroshe homepage">
+          </figure>
+
+          <dl class="case-meta">
+            <div class="case-meta__group">
+              <dt>Role</dt>
+              <dd style="width:179px">Product Designer and Webflow Developer</dd>
+            </div>
+            <div class="case-meta__group">
+              <dt>Timeline</dt>
+              <dd>3 months</dd>
+            </div>
+            <div class="case-meta__group">
+              <dt>Team</dt>
+              <dd>
+                <span class="case-meta__list">
+                  <span>Ijeoma Okoh (Product Manager)</span>
+                  <span>Victory Garuba (Webflow support)</span>
+                  <span>Afolabi Ojabowale (Copywriting)</span>
+                </span>
+              </dd>
+            </div>
+            <div class="case-meta__group">
+              <dt>Platform</dt>
+              <dd>Website</dd>
+            </div>
+            <div class="case-meta__group">
+              <dt>What I worked on</dt>
+              <dd>
+                <span class="case-meta__list">
+                  <span>UX Strategy</span>
+                  <span>Dashboard Design</span>
+                  <span>Responsive Design</span>
+                </span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="case-section" id="context">
+        <h2 class="case-h2">Context</h2>
+        <div class="case-prose case-prose--16 case-prose--spaced">
+          <p>Heroshe started as a shipping company, helping people get products from the US, UK, and China delivered to Nigeria. By late 2024, it was expanding into sourcing, purchasing, and helping businesses sell internationally.</p>
+          <p>The new website had two jobs. It needed to help four distinct customer groups find the right service quickly. It also needed to show investors the full breadth of the platform and its long-term vision during a fundraising push.</p>
+          <p>I designed the site in Figma and led the build in Webflow, my first time using the platform on a live project.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="problem">
+        <h2 class="case-h2">The Problem</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg">
+            <p>The existing site had two limitations:</p>
+            <ul class="case-list">
+              <li>It only told the shipping story. Everything centred on shipping, so visitors and investors couldn’t see where the company was heading.</li>
+              <li>It was hard to change. The site’s setup meant every update needed engineering time, which slowed down marketing and made it hard to keep the message current as the business evolved.</li>
+            </ul>
+          </div>
+
+          <figure class="case-plate" data-reveal="rise">
+            <div class="case-plate__grid">
+              <img src="assets/hw-old-1.png" alt="The previous Heroshe homepage">
+              <img src="assets/hw-old-2.png" alt="The previous Heroshe services page">
+              <img src="assets/hw-old-3.png" alt="The previous Heroshe pricing page">
+              <img src="assets/hw-old-4.png" alt="The previous Heroshe about page">
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="goals">
+        <h2 class="case-h2">Goals</h2>
+        <ul class="case-list">
+          <li>Communicate Heroshe’s current services and long-term vision</li>
+          <li>Give each customer group a clear path, with tailored messaging and calls to action</li>
+          <li>Present the platform convincingly to investors</li>
+          <li>Move ownership of the site to marketing, so the team could update content without engineering</li>
+          <li>Modernise the visual design and make it feel more human</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="audiences">
+        <h2 class="case-h2">Who the site served</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg">
+            <p>The site had to speak to four customer groups:</p>
+            <ol class="case-list case-list--num">
+              <li>Shoppers, who want to buy from the US, UK, or China and need a reliable way to get items delivered</li>
+              <li>Entrepreneurs, who need help finding the right products and suppliers, and handling purchases and payments</li>
+              <li>Plugs, who want to earn commission by fulfilling other people’s orders</li>
+              <li>Sellers, who want to reach customers on platforms like Amazon, eBay, and Etsy</li>
+            </ol>
+            <p>And one more reader: investors, who needed to see the whole platform and believe in where it was going.</p>
+          </div>
+
+          <figure class="case-plate" data-reveal="rise">
+            <div class="case-crop" style="aspect-ratio:1002/567">
+              <img src="assets/hw-audiences.png" alt="Service pages for each Heroshe customer group" style="width:100%;height:114.74%;top:-0.22%">
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="how-we-worked">
+        <h2 class="case-h2">How we worked</h2>
+        <div class="case-prose case-prose--lg case-prose--spaced">
+          <p>Direction came mainly from the CEO and CTO, who defined the vision and the site structure. The CTO left near the end of the project, and the CEO shaped most of the final direction.</p>
+          <p>Speaking with customers wasn’t possible within the timeline and circumstances. So I worked from leadership’s understanding of each customer group and focused on turning that vision into a site that was clear and easy to navigate. The copywriting team wrote the page copy.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="market">
+        <h2 class="case-h2">The market</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg case-prose--spaced">
+            <p>The space was crowded. Most competitors led with one strength, either shopping from international stores (Mall for Africa, ShopToMyDoor) or logistics and forwarding (GIG Logistics, Aramex Shop &amp; Ship). FlyMyMall came closest to Heroshe’s model.</p>
+            <p>Heroshe’s case rested on bringing shopping, sourcing, shipping, and selling together in one place. That made clear structure essential, because the site had to show the breadth of the offer without overwhelming anyone looking for one service.</p>
+          </div>
+
+          <figure class="case-plate" data-reveal="rise">
+            <div class="case-crop" style="aspect-ratio:1000/465">
+              <img src="assets/hw-market.png" alt="Competitive landscape comparison" style="width:100.13%;height:107.02%;left:-0.06%;top:-0.1%">
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="decisions">
+        <h2 class="case-h2">Key design decisions</h2>
+
+        <div class="case-solutions">
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg case-prose--spaced">
+              <ol class="case-decision-head"><li>Four services, four clear paths</li></ol>
+              <p>I organised the site around four services, each matching one customer group: Ship for Me, Buy for Me, Buy for Others, and Fulfil for Me. They sit together under a single “Products” menu, and each one has its own page and call to action.</p>
+              <p>This let a first-time visitor recognise themselves in one click. It also showed investors how much ground the platform covered, just by looking at the menu.</p>
+            </div>
+
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-plate__grid">
+                <div class="case-crop" style="aspect-ratio:494/519">
+                  <img src="assets/hw-paths-1.png" alt="Ship for Me service page" style="width:304.45%;height:141.81%;left:-102.23%;top:-0.27%">
+                </div>
+                <img src="assets/hw-paths-2.png" alt="Buy for Me service page">
+                <img src="assets/hw-paths-3.png" alt="Buy for Others service page">
+                <img src="assets/hw-paths-4.png" alt="Fulfil for Me service page">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg case-prose--spaced">
+              <ol class="case-decision-head" start="2"><li>Grounding the vision in real customers</li></ol>
+              <p>I organised the site around four services, each matching one customer group: Ship for Me, Buy for Me, Buy for Others, and Fulfil for Me. They sit together under a single “Products” menu, and each one has its own page and call to action.</p>
+              <p>This let a first-time visitor recognise themselves in one click. It also showed investors how much ground the platform covered, just by looking at the menu.</p>
+            </div>
+
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-crop" style="aspect-ratio:1002/837">
+                <img src="assets/hw-vision.png" alt="Customer stories across the site" style="width:100%;height:142.67%;top:-0.07%">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-prose case-prose--lg">
+            <ol class="case-decision-head" start="3"><li>Built for marketing to own</li></ol>
+            <p>Every structural decision in Webflow was made with a clear goal in mind: the marketing team should be able to update the site without engineering. That shaped how I set up classes and CMS collections from the start.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="webflow">
+        <h2 class="case-h2">Building in Webflow</h2>
+        <div class="case-prose case-prose--lg case-prose--spaced">
+          <p>Webflow was new to me, and I learned it while building a real site on a real deadline. Its class-based styling and CMS structure felt overwhelming at first compared to Figma.</p>
+          <p>To keep moving, I split the work into phases, finishing the structure and designs before starting the build. I leaned on Webflow University, Finsweet’s Client-First guidelines, community forums, and a lot of hands-on experimentation.</p>
+          <p>I built most of the site myself, including the class structure, CMS collections, and interactions. Victory joined near the end to build two pages and help with cleanup before launch.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="next">
+        <h2 class="case-h2">What happened next</h2>
+        <div class="case-stack">
+          <figure class="case-figure" data-reveal="rise">
+            <img src="assets/hw-mobile-trio.jpg" alt="The Heroshe site on three phones">
+          </figure>
+          <div class="case-prose case-prose--lg case-prose--spaced">
+            <p>The site launched and moved ownership of updates to the marketing team, removing the dependency on engineering. Leadership used it as a core part of investor conversations during the fundraising push, where it presented the full range of Heroshe’s services and long-term vision.</p>
+            <p>The raise didn’t close. The company was facing wider financial challenges, and a few months later Heroshe shut down. Because of that, we never ran a planned post-launch review.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="reflection">
+        <h2 class="case-h2">Reflection</h2>
+        <div class="case-prose case-prose--lg case-prose--spaced">
+          <p><b>What I’m proudest of.</b> I turned a broad, fast-moving vision into four clear paths. Each customer group could find their service within a click, and the same structure showed investors how much ground Heroshe covered.</p>
+          <p><b>What I’d do differently.</b> This project taught me how much tension there can be between a site that sells today and one that pitches tomorrow. Investors needed to see ambition and range; customers needed to know exactly what they could use right now. If I did it again, I’d make that line clearer in the design, so the vision could be bold without blurring what was available.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="next-case">
+    <h2 class="next-case__title"><span data-reveal="mask">NEXT CASE STUDY</span></h2>
+
+    <article class="work work--next" data-reveal="rise">
+      <div class="work__col">
+        <p class="work__client">Pharma Plus</p>
+        <p class="work__name">A healthcare product concept for easier medication access.</p>
+        <div class="work__tags">
+          <span class="tag">Healthtech</span>
+          <span class="tag">E-commerce</span>
+          <span class="tag">Mobile App</span>
+        </div>
+      </div>
+      <div class="work__body">
+        <p>Designed an MVP to bridge the pharmaceuticals accessibility gap for customers residing outside major cities in Nigeria</p>
+        <a class="btn btn--case" href="pharma-plus.html">
+          View Case Study
+          <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+        </a>
+      </div>
+      <figure class="work__media work__media--pharma">
+        <img src="assets/work-pharma-plus.jpg" alt="Pharma Plus mobile app screens">
+      </figure>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <div class="footer__main">
+        <div class="footer__cta" data-reveal="rise">
+          <p class="footer__blurb">Available for product design and UX strategy roles where research, product thinking, and business impact matter.</p>
+          <a class="btn" href="mailto:marthaadeleke@gmail.com">
+            <span class="btn__label" aria-live="polite">Email Me</span>
+            <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+          </a>
+        </div>
+        <div class="footer__wordmark" data-stagger><span data-reveal="mask">MARTHA</span><span data-reveal="mask">ADELEKE</span></div>
+      </div>
+
+      <nav class="footer__links" data-reveal="rise">
+        <a href="https://www.linkedin.com/in/martha-adeleke/" target="_blank" rel="noopener noreferrer">LINKEDIN<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+        <a href="https://medium.com/@marthaadeleke" target="_blank" rel="noopener noreferrer">MEDIUM<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+      </nav>
+    </div>
+  </footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

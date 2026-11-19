@@ -1,0 +1,513 @@
+/* Case-study page styles. Loaded after styles.css, which supplies the shared
+   navbar, .btn, .work and .footer components plus the base tokens. */
+
+:root {
+  --forest-ink: #0f4d2e;
+  --hairline: rgba(14, 14, 12, 0.3);
+}
+
+.case { padding: 64px var(--gutter); }
+
+.case__layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  width: 100%;
+}
+
+/* --- side index --- */
+
+.case-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 240px;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.case-nav a {
+  width: 100%;
+  font-weight: 400;
+  opacity: 0.5;
+  transition: opacity 200ms ease;
+}
+.case-nav a:hover { opacity: 1; }
+.case-nav a.is-active {
+  font-weight: 700;
+  color: var(--forest-ink);
+  opacity: 1;
+}
+
+.case__content {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* --- intro --- */
+
+.case-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.case-intro__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 960px;
+  max-width: 100%;
+}
+
+.case-title {
+  margin: 0;
+  width: 100%;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+.case-intro__lead {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.case-intro__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+/* 1147x858 render seated at (-54, -50) in the 1040x480 frame. */
+.case-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1040 / 480;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.case-hero img {
+  position: absolute;
+  left: 49.95192%;
+  top: 78.95833%;
+  width: 110.28846%;
+  height: 178.75%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(var(--z, 1));
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.case-hero:hover { --z: 1.03; }
+
+.case-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.case-meta__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  gap: 8px;
+}
+.case-meta__key { font-weight: 700; }
+.case-meta__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* --- generic section --- */
+
+.case-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.case-block--context { gap: 24px; }
+
+.case-block__title {
+  margin: 0;
+  width: 100%;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+.case-block__head,
+.case-block__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.case-block__head { gap: 16px; }
+.case-block__stack { gap: 24px; }
+
+.case-prose {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.case-prose p { width: 100%; }
+
+.case-lede {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+/* The Impact intro is set a notch tighter than the other ledes. */
+.case-lede--tight { line-height: 1.5; }
+
+/* A framed product screenshot. */
+.case-shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1385 / 439;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.case-shot img {
+  position: absolute;
+  left: -3.25%;
+  top: -41%;
+  width: 103.25%;
+  height: 141%;
+  max-width: none;
+}
+
+/* --- comparison table --- */
+
+.case-table {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.case-table__col {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.case-table__head {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  padding: 0 24px;
+  background: var(--forest-ink);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--paper);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+/* Figma's rule sits inside the cell, so 12px of padding is 12 / 11 + border. */
+.case-table__cell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px 11px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+/* The last rule would otherwise double up against the container border. */
+.case-table__cell:last-child { border-bottom: 0; }
+
+/* --- bordered note cards --- */
+
+.case-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.case-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 23px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.case-card__title { font-weight: 700; }
+
+/* --- decisions --- */
+
+.case-decisions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.case-decision {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.case-decision__title { font-weight: 600; }
+
+/* --- solution --- */
+
+.case-solution {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+  width: 100%;
+}
+.case-solution__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.case-solution__name {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.case-solution__text {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.case-solution__figures {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Screens are absolutely placed inside a fixed 1040x480 frame, expressed as
+   percentages so each composition survives a resize. */
+.case-figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1040 / 480;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.case-figure__pane {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+}
+.case-figure__pane img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.pane--storelist-web { left: -0.57692%; top: 0.31833%; width: 74.90385%; height: 117.29167%; }
+.pane--storelist-web img { top: 0.02%; height: 103.44%; }
+.pane--storelist-mob { left: 75.48077%; top: 0.11%;    width: 24.90385%; height: 117.08333%; }
+.pane--buyforme1-web { left: 0.19231%;  top: 0.00583%; width: 78.84615%; height: 104.79167%; }
+.pane--buyforme1-mob { left: 80.19231%; top: 0.00583%; width: 20.57692%; height: 104.58333%; }
+.pane--buyforme2-web { left: -0.48077%; top: 0.4225%;  width: 78.46154%; height: 106.04167%; }
+.pane--buyforme2-mob { left: 79.13462%; top: 0.4225%;  width: 20.86538%; height: 106.45833%; }
+.pane--agent-web     { left: 0.38462%;  top: 0.07375%; width: 73.65385%; height: 129.375%; }
+.pane--agent-mob     { left: 75.19231%; top: 0.07375%; width: 24.61538%; height: 129.375%; }
+.pane--agent-mob img { left: -0.02%; width: 100.05%; height: 156.75%; }
+
+/* --- impact --- */
+
+.case-impact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+.case-impact__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: calc(50% - 8px);
+  height: 208px;
+  padding: 23px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.case-impact__icon {
+  display: block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+.case-impact__icon img { display: block; width: 100%; height: 100%; }
+.case-impact__stat { font-weight: 700; white-space: nowrap; }
+.case-impact__note { width: 100%; }
+
+/* --- reflection --- */
+
+.case-reflection {
+  width: 100%;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.case-reflection p { margin: 0; }
+.case-reflection b { font-weight: 700; }
+
+/* --- next case study --- */
+
+.case-outro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.next-case {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+  width: 100%;
+  padding: 160px var(--gutter);
+}
+
+.next-case__title {
+  margin: 0;
+  width: 100%;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 160px;
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+}
+
+/* .work's last-child rule would strip the divider off a lone row. */
+.next-case .work {
+  padding-bottom: 40px;
+  border-bottom: 0.5px solid var(--rule);
+}
+
+/* On paper the work-preview chrome needs ink tones rather than the paper
+   tones the dark Selected Works section uses. */
+.tag--ink { border-color: rgba(14, 14, 12, 0.5); }
+
+/* --- desktop canvas ---
+   styles.css pins the layout to the reference 1440px canvas and centres the
+   content box; these two sections need the same treatment. */
+@media (min-width: 901px) {
+  .case,
+  .next-case {
+    padding-left: calc((100% - (1440px - 2 * var(--gutter))) / 2);
+    padding-right: calc((100% - (1440px - 2 * var(--gutter))) / 2);
+  }
+}
+
+/* --- responsive --- */
+
+@media (max-width: 900px) {
+  .case { padding: 40px var(--gutter) 64px; }
+  .case__layout { flex-direction: column; gap: 40px; }
+  .case-nav {
+    flex: 0 0 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    width: 100%;
+    font-size: 14px;
+  }
+  .case-nav a { width: auto; }
+  .case__content { gap: 56px; }
+
+  .case-title { font-size: 32px; }
+  .case-intro__lead { font-size: 16px; }
+  .case-block__title { font-size: 26px; }
+  .case-lede,
+  .case-decision,
+  .case-card,
+  .case-solution__name,
+  .case-solution__text,
+  .case-reflection { font-size: 17px; }
+  .case-prose { font-size: 16px; gap: 20px; }
+
+  .case-meta { flex-wrap: wrap; gap: 24px 32px; font-size: 16px; }
+
+  /* Rows stack so each label keeps its value; the table becomes two blocks. */
+  .case-table { flex-direction: column; }
+  .case-table__cell,
+  .case-table__head { white-space: normal; font-size: 16px; }
+  .case-table__col:first-child .case-table__cell:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .case-solution { gap: 40px; }
+  .case-solution__figures { gap: 24px; }
+
+  .case-impact__card { width: 100%; height: auto; font-size: 17px; }
+  .case-impact__stat { white-space: normal; }
+
+  .case-outro { gap: 24px; }
+  .next-case { gap: 32px; padding: 64px var(--gutter); }
+  .next-case__title { font-size: min(160px, calc((100vw - 2 * var(--gutter)) * 0.125)); }
+}

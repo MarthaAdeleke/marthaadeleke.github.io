@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bridging the Access Gap: An MVP for Pharma Plus — Martha Adeleke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="nav-brand" href="index.html">Martha Adeleke</a>
+    <button class="nav-toggle" type="button" aria-expanded="false"
+            aria-controls="nav-panel" aria-label="Open menu">
+      <span class="nav-toggle__box" aria-hidden="true">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </span>
+    </button>
+    <div class="nav-panel" id="nav-panel">
+      <nav class="nav-menu">
+        <a class="nav-link" href="index.html#work" aria-current="page">Work</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="index.html#field-notes">Field Notes</a>
+        <a class="nav-link" href="about.html#resume">Resume</a>
+      </nav>
+      <a class="btn nav-cta" href="mailto:marthaadeleke@gmail.com">
+        <span class="btn__label" aria-live="polite">Email Me</span>
+        <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="case">
+    <nav class="case-toc case-toc--narrow" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#brief">The Brief</a>
+      <a href="#problem">How I Read the Problem</a>
+      <a href="#audience">Who I Designed For</a>
+      <a href="#mvp">Defining the MVP</a>
+      <a href="#platform">Choosing the Platform</a>
+      <a href="#foundations">Visual Foundations</a>
+      <a href="#decisions">Key Design Decisions</a>
+      <a href="#validate">How I’d Validate It</a>
+      <a href="#looking-back">Looking Back</a>
+    </nav>
+
+    <div class="case-body">
+      <section class="case-section case-intro" id="overview">
+        <div class="case-head">
+          <h1 class="case-title">Bridging the Access Gap: An MVP for Pharma Plus</h1>
+          <p class="case-intro__text">A 72-hour design challenge</p>
+        </div>
+
+        <figure class="case-plate" data-reveal="rise">
+          <div class="case-phones case-phones--tall">
+            <img src="assets/pp-188.png" alt="Pharma Plus home screen">
+            <img src="assets/pp-189.png" alt="Pharma Plus product listing">
+            <img src="assets/pp-190.png" alt="Pharma Plus product detail">
+          </div>
+        </figure>
+      </section>
+
+      <section class="case-section" id="brief">
+        <h2 class="case-h2">The brief</h2>
+        <div class="case-prose case-prose--16 case-prose--spaced">
+          <p>This project began as a take-home task during a hiring process for Product Designer at Heroshe. The brief described Pharma Plus, a large Nigerian e-commerce chain that sells pharmaceuticals and cosmetics. Customers outside Lagos, Abuja, and Port Harcourt couldn’t reliably get quality products from them. I had 72 hours to design an MVP that solved this, document my thinking, and choose the platform that best fit the solution.</p>
+          <p>I had no access to users or to Pharma Plus’s data, so everything here is based on desk research, a review of existing online pharmacy apps, and assumptions I’ve tried to state clearly. I got the role. I’m sharing the work mostly as it was submitted, with some notes at the end on what I’d do differently now.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="problem">
+        <h2 class="case-h2">How I read the problem</h2>
+        <div class="case-prose case-prose--lg case-prose--loose">
+          <p>The brief sounds like an app problem, but I read it as an access problem with three parts:</p>
+          <ul class="case-points-list">
+            <li><b>Getting the product there:</b> Pharma Plus’s reach is concentrated in the big cities. Without distribution closer to customers, deliveries are slow and expensive whatever the app looks like.</li>
+            <li><b>Getting people to buy online at all:</b> In smaller towns, many people have less experience with online shopping and prefer to see a product before paying for it.</li>
+            <li><b>Trusting what arrives:</b> For medicine especially, people worry about fake products, online scams, and whether their payment is safe.</li>
+          </ul>
+          <p>Only part of this can be solved with interface design. So I tried to design an app that works within the logistics and trust constraints, instead of assuming they’d already been solved.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="audience">
+        <h2 class="case-h2">Who I designed for</h2>
+        <div class="case-prose case-prose--lg case-prose--loose case-prose--spaced">
+          <p>I designed for an assumed user: someone living outside a major city, using a mid-range Android phone, with patchy or expensive data. They’ve bought things online occasionally or not at all, and they currently get medicine from a local chemist. They’d use Pharma Plus for products they can’t find locally or don’t trust locally, if ordering felt safe and delivery was realistic.</p>
+          <p>This is an assumption, not a research finding. Checking it would be the first thing to do with real users.</p>
+        </div>
+      </section>
+
+      <section class="case-section" id="mvp">
+        <h2 class="case-h2">Defining the MVP</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg case-prose--loose">
+            <p>I focused the MVP on the smallest set of features that would let someone outside the big cities find a product, trust it enough to buy, and receive it:</p>
+            <ul class="case-list">
+              <li>Discover: product categories, search, and a home screen showing popular categories and deals</li>
+              <li>Decide: product details with reviews, and the option to save items for later</li>
+              <li>Buy: browsing without an account, and a short checkout with card and bank transfer</li>
+              <li>Receive: doorstep delivery or pickup, and order tracking</li>
+            </ul>
+            <p>Building regional warehouses was outside the scope of the MVP. That’s a business investment, and the realistic first step is partnering with local pharmacies as pickup points.</p>
+          </div>
+
+          <figure class="case-plate" data-reveal="rise">
+            <img src="assets/pp-ia.png" alt="Pharma Plus information architecture">
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="platform">
+        <h2 class="case-h2">Choosing the platform</h2>
+        <p class="case-lead">I chose an Android app for three reasons. Smartphones are the main way many Nigerians go online, and Android is by far the most common platform. A native app can store products and the cart locally, so people can keep browsing and adding items when their connection drops, and the app syncs when they’re back online. A mobile web version would have been easier to reach without installing anything, but it would handle weak connections less reliably, and connectivity was the constraint I was most worried about.</p>
+      </section>
+
+      <section class="case-section" id="foundations">
+        <h2 class="case-h2">Visual foundations</h2>
+        <div class="case-stack">
+          <div class="case-prose case-prose--lg">
+            <p>To keep the screens consistent within the 72 hours, I built a small design system: a type scale, a colour palette with a blue primary colour and three accent colours, a set of outline and filled icons for active states, and the core components the flows needed.</p>
+            <p>Some components came directly from the MVP decisions. Because bank transfer payments aren’t always confirmed right away, the orders screen has an “Unpaid” status alongside Processing and Delivered. Saved addresses can be set as the default so customers can switch between doorstep delivery and pickup. After payment, a clear confirmation screen tells first-time buyers that their order has gone through.</p>
+          </div>
+
+          <figure class="case-plate" data-reveal="rise">
+            <img src="assets/pp-design-system.png" alt="The Pharma Plus design system: type scale, colour palette, icons and components">
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="decisions">
+        <h2 class="case-h2">Key design decisions</h2>
+
+        <div class="case-solutions">
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg case-prose--spaced">
+              <ol class="case-decision-head"><li>Categories that match how people shop</li></ol>
+              <p>I grouped products into Medicine, Beauty, Wellness, and Childcare, which are broad and familiar categories. Someone new to online shopping can find what they need without searching through a long list</p>
+            </div>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/pp-191.png" alt="Category browsing">
+                <img src="assets/pp-192.png" alt="Category results">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg">
+              <ol class="case-decision-head" start="2"><li>A home screen that reduces searching</li></ol>
+              <p>Popular categories, promotions, and new arrivals appear first, with quick-access shortcuts for frequent tasks. Each product page includes reviews and ratings, so first-time buyers can see what other customers experienced.</p>
+            </div>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/pp-188.png" alt="Home screen">
+                <img src="assets/pp-193.png" alt="Product detail with reviews">
+                <img src="assets/pp-195.png" alt="Ratings and reviews">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg">
+              <ol class="case-decision-head" start="3"><li>Browse first, sign up later</li></ol>
+              <p>People can explore the store and add items to their cart without creating an account. Registration only happens at checkout. For someone unsure about shopping online, being asked to sign up immediately is a common reason to leave.</p>
+            </div>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/pp-196.png" alt="Cart without an account">
+                <img src="assets/pp-197.png" alt="Registration at checkout">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg">
+              <ol class="case-decision-head" start="4"><li>A short checkout with familiar payment options</li></ol>
+              <p>I offered card payment and bank transfer. Bank transfer matters because many people are more comfortable with it than entering card details in an app they don’t know.</p>
+            </div>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/pp-188.png" alt="Checkout summary">
+                <img src="assets/pp-193.png" alt="Payment method selection">
+                <img src="assets/pp-195.png" alt="Bank transfer details">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg">
+              <ol class="case-decision-head" start="5"><li>Delivery options that match the reality of logistics</li></ol>
+              <p>Customers can choose doorstep delivery or collection from a nearby pickup point. The pickup option is what makes the service practical outside the cities, since it builds on local partners instead of long delivery routes.</p>
+            </div>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--short">
+                <img src="assets/pp-198.png" alt="Delivery method">
+                <img src="assets/pp-200.png" alt="Saved addresses">
+                <img src="assets/pp-199.png" alt="Pickup points">
+                <img src="assets/pp-201.png" alt="Order confirmation">
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-stack">
+            <div class="case-prose case-prose--lg">
+              <ol class="case-decision-head" start="6"><li>Order tracking to ease the wait</li></ol>
+              <p>Longer deliveries cause anxiety, especially for a first order. Tracking shows customers where their order is at each stage.</p>
+            </div>
+            <figure class="case-plate" data-reveal="rise">
+              <div class="case-phones case-phones--tall">
+                <img src="assets/pp-202.png" alt="Order list with statuses">
+                <img src="assets/pp-203.png" alt="Order tracking detail">
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="validate">
+        <h2 class="case-h2">How I’d validate it</h2>
+        <p class="case-lead case-lead--tight">The brief didn’t include testing, but my next step would have been usability testing with people who match the assumed user. I’d want to know whether they could find and buy a product without help, whether the pickup option felt trustworthy, and what would stop them from placing their first order.</p>
+      </section>
+
+      <section class="case-section" id="looking-back">
+        <h2 class="case-h2">Looking back</h2>
+        <div class="case-prose case-prose--lg">
+          <p>With a few more years of experience, here is what I would change:</p>
+          <ul class="case-points-list">
+            <li><b>Treat authenticity as the main trust problem:</b> Reviews help, but when buying medicine, people are most worried about fake products. I’d show clear signs of authenticity, such as NAFDAC registration numbers and where products come from.</li>
+            <li><b>Offer payment on delivery or at pickup:</b> For a cautious first-time buyer, paying when the product arrives removes most of the risk. It fits the trust problem better than adding more online payment options.</li>
+            <li><b>Make tracking work offline too:</b> Real-time tracking assumes a connection my own platform decision said users might not have. SMS updates would be more consistent with the rest of the design.</li>
+            <li><b>Compare more platforms before choosing:</b> I’d look properly at WhatsApp ordering, which many pharmacies already use informally, before deciding on an app.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="next-case">
+    <h2 class="next-case__title"><span data-reveal="mask">NEXT CASE STUDY</span></h2>
+
+    <article class="work work--next" data-reveal="rise">
+      <div class="work__col">
+        <p class="work__client">LearnAM</p>
+        <p class="work__name">A mobile learning redesign for better access and adoption.</p>
+        <div class="work__tags">
+          <span class="tag">Edtech</span>
+          <span class="tag">Mobile UX</span>
+          <span class="tag">Research</span>
+          <span class="tag">Design System</span>
+        </div>
+      </div>
+      <div class="work__body">
+        <p>Redesigned the learning experience to make course discovery, progression, and completion easier for users.</p>
+        <a class="btn btn--case" href="learnam.html">
+          View Case Study
+          <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+        </a>
+      </div>
+      <figure class="work__media work__media--learnam">
+        <img src="assets/work-learnam.jpg" alt="LearnAM mobile app held in hand">
+      </figure>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <div class="footer__main">
+        <div class="footer__cta" data-reveal="rise">
+          <p class="footer__blurb">Available for product design and UX strategy roles where research, product thinking, and business impact matter.</p>
+          <a class="btn" href="mailto:marthaadeleke@gmail.com">
+            <span class="btn__label" aria-live="polite">Email Me</span>
+            <span class="btn__icon"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span>
+          </a>
+        </div>
+        <div class="footer__wordmark" data-stagger><span data-reveal="mask">MARTHA</span><span data-reveal="mask">ADELEKE</span></div>
+      </div>
+
+      <nav class="footer__links" data-reveal="rise">
+        <a href="https://www.linkedin.com/in/martha-adeleke/" target="_blank" rel="noopener noreferrer">LINKEDIN<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+        <a href="https://medium.com/@marthaadeleke" target="_blank" rel="noopener noreferrer">MEDIUM<span class="link-arrow"><img src="assets/arrow-union.svg" alt="" width="12" height="25"></span></a>
+      </nav>
+    </div>
+  </footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

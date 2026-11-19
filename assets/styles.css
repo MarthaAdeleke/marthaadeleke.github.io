@@ -1,0 +1,2208 @@
+  @font-face {
+    font-family: "Kaneda Gothic";
+    src: url("fonts/kaneda-gothic-bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --paper: #f5efe3;
+    --ink: #0e0e0c;
+    --accent: #c2410c;
+    --forest: #004f25;
+    --rule: rgba(245, 239, 227, 0.5);
+    --rule-soft: rgba(245, 239, 227, 0.2);
+    --peach: #ebccb8;
+    --sage: #c4cfbd;
+    --rose: #e3c7c4;
+    --sand: #ede1c6;
+    --gutter: 40px;
+    --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --display: "Kaneda Gothic", "Anton", "Arial Narrow", sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  /* blockquote joins the list for the participant quotes: its default 40px
+     side margins pushed the card past the column on a phone. */
+  p, h1, figure, dl, blockquote { margin: 0; }
+
+  /* ---------- Navbar ---------- */
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    padding: 20px var(--gutter);
+    background: var(--paper);
+  }
+
+  .nav-menu {
+    display: flex;
+    flex: 1 0 0;
+    min-width: 0;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* The panel only exists for the mobile drop menu. On desktop it takes no part
+     in layout, so its three children stay direct flex items of the navbar and
+     the reference composition is untouched. */
+  .nav-panel { display: contents; }
+
+  /* Both of these belong to the mobile bar alone. */
+  .nav-brand,
+  .nav-toggle { display: none; }
+
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 1px;
+    transition: background-size 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover { background-size: 100% 1px; }
+
+  .nav-link[aria-current="page"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-link[aria-current="page"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .nav-cta {
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  /* Figma strokes sit inside the frame bounds, so padding is the design value
+     minus the 1px border to keep the outer box at 42px tall / text 24px inset. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 7px 23px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: 32px;
+    box-shadow: 1px 3px 0 0 var(--ink);
+    font-weight: 700;
+    white-space: nowrap;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .btn:hover { transform: translate(1px, 3px); box-shadow: 0 0 0 0 var(--ink); }
+
+  .btn--case { border-radius: 24px; }
+
+  /* Once the label carries the address the arrow, which reads as "go", steps
+     out of the way - and keeps the button from growing more than it must. */
+  .btn.is-copied .btn__icon { display: none; }
+
+  /* The copied label is far longer than "Email Me" and will not fit the pill on
+     a narrow phone: at 320 it needs 276px of a 224px inner box, so the address
+     would be cut off - the one thing this button exists to show. A point of type
+     and tighter padding bring it back on one line, and wrapping is the backstop
+     if the address is ever longer than this one. */
+  @media (max-width: 400px) {
+    .btn.is-copied {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-size: 14px;
+      white-space: normal;
+    }
+  }
+
+  .btn__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24.545px;
+    height: 12.274px;
+    flex-shrink: 0;
+  }
+  .btn__icon img {
+    display: block;
+    width: 12.274px;
+    height: 24.545px;
+    transform: rotate(-90deg);
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 84px;
+    padding: 8px var(--gutter) 160px;
+    background: var(--paper);
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    /* Makes the content column itself the unit the wordmark is sized against,
+       so it spans edge to edge without having to guess at the scrollbar. */
+    container-type: inline-size;
+  }
+
+  .headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    width: 100%;
+    font-family: var(--display);
+    font-weight: 700;
+    font-style: normal;
+    font-size: 308px;
+    line-height: 0.88;
+    letter-spacing: 0;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  .headline > span { flex-shrink: 0; }
+
+  .tagline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 8px;
+  }
+  .tagline p {
+    font-weight: 500;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 1238px;
+  }
+
+  .feature { display: flex; flex: 1 0 0; min-width: 0; }
+
+  .feature--left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .feature__label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .feature__label p { flex: 1 0 0; min-width: 0; font-weight: 600; }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .stats p { white-space: nowrap; }
+  .stats b { font-weight: 700; }
+
+  .feature--right { align-items: center; justify-content: flex-end; }
+  .feature--right p { flex: 1 0 0; min-width: 0; font-weight: 400; }
+  .feature--right strong { font-weight: 400; }
+
+  .media {
+    position: relative;
+    flex: 0 1 352px;
+    margin: 0;
+    aspect-ratio: 352 / 232;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  /* Percentages mirror the Figma crop: 476x760 image centred at top -292 in a 352x232 frame. */
+  .media img {
+    position: absolute;
+    left: 50%;
+    top: -125.86207%;
+    width: 135.22727%;
+    height: 327.58621%;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  /* ---------- Selected Works ---------- */
+
+  .works {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 160px var(--gutter);
+    background: var(--forest);
+    color: var(--paper);
+  }
+
+  .works__inner {
+    display: flex;
+    flex: 1 0 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+  }
+
+  .works__title {
+    width: 100%;
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 160px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--paper);
+  }
+
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .work {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    padding-bottom: 40px;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .work:last-child { padding-bottom: 0; border-bottom: 0; }
+
+  .work__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 0 1 320px;
+    min-width: 0;
+  }
+
+  .work__client {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .work__name {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  .work__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Same inside-stroke padding math as .btn: 12/4 design inset minus the 1px border. */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 11px;
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .work__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 0 1 320px;
+    min-width: 0;
+    gap: 16px;
+  }
+  .work__body p {
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  .work__media {
+    position: relative;
+    flex: 0 1 415px;
+    aspect-ratio: 415 / 360;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  /* Each mockup is placed by its Figma centre offset, expressed as a percentage of
+     the 415x360 block so the crop survives any resize. */
+  .work__media img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(var(--z, 1));
+  }
+
+  .work__media--procurement img {
+    width: 155.3121%; height: 133.9797%;
+    left: 52.26506%; top: 58.43333%;
+    transform: translate(-50%, -50%) rotate(1deg) scale(var(--z, 1));
+  }
+  .work__media--website img {
+    width: 169.39759%; height: 146.11111%;
+    left: 53.45783%; top: 56.66667%;
+  }
+  .work__media--learnam img {
+    width: 374.61759%; height: 459.44444%;
+    left: 87.55422%; top: 60.55556%;
+  }
+  .work__media--pharma img {
+    width: 204.57831%; height: 176.94444%;
+    left: 50.08434%; top: 69.86111%;
+  }
+  .work__media--scape img {
+    width: 192.04819%; height: 165.83333%;
+    left: 52.01205%; top: 50.13889%;
+  }
+
+  /* ---------- Testimonials ---------- */
+
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    overflow: hidden;
+    padding: 160px var(--gutter);
+    background: var(--paper);
+  }
+
+  .testimonials__title {
+    width: 556px;
+    max-width: 100%;
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 160px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  .quotes {
+    display: flex;
+    align-items: flex-start;
+    width: 1248px;
+    max-width: 100%;
+  }
+
+  /* Each 400x262 card is tilted 4deg, so its slot is the rotated bounding box:
+     400*cos4 + 262*sin4 = 417.302 wide, 400*sin4 + 262*cos4 = 289.264 tall. */
+  .quote-slot {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 417.302px;
+    height: 289.264px;
+  }
+
+  .quote {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 400px;
+    height: 262px;
+    margin: 0;
+    padding: 32px 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    color: var(--ink);
+  }
+  .quote-slot:nth-child(1) .quote { background: var(--peach); transform: rotate(-4deg); }
+  .quote-slot:nth-child(2) .quote { background: var(--sage);  transform: rotate(4deg); }
+  .quote-slot:nth-child(3) .quote { background: var(--rose);  transform: rotate(-4deg); }
+
+  .quote__author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  /* The avatar counter-rotates so it stays upright on the tilted card; its box is
+     the counter-rotated bounding square, 48*(cos4+sin4) = 51.231. */
+  .quote__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 51.231px;
+    height: 51.231px;
+  }
+  .quote-slot:nth-child(1) .avatar { transform: rotate(4deg); }
+  .quote-slot:nth-child(2) .avatar { transform: rotate(-4deg); }
+  .quote-slot:nth-child(3) .avatar { transform: rotate(4deg); }
+
+  /* Layered avatar: each part is an exported SVG placed by its Figma inset
+     percentages inside a shared 48px box. Figma clips the stack with a round
+     blob (assets/avatar/bg.svg); a circle matches it to well under a pixel here
+     and avoids mask-mode support gaps. */
+  .avatar {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .avatar img {
+    position: absolute;
+    display: block;
+    max-width: none;
+  }
+
+  .quote__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .quote__name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .quote__role {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .quote__role--sm { font-size: 12px; }
+
+  .quote p:last-child {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ---------- Field Notes ---------- */
+
+  .notes {
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    gap: 160px;
+    padding: 160px var(--gutter);
+    background: var(--accent);
+    color: var(--paper);
+  }
+
+  .notes__media {
+    position: relative;
+    flex: 0 1 380px;
+    aspect-ratio: 380 / 420;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  /* Figma flips the photo vertically and rotates it 178deg — together a mirrored 2deg tilt. */
+  .notes__media img {
+    position: absolute;
+    left: 59.61842%;
+    top: 64.80476%;
+    width: 324.53053%;
+    height: 165.25071%;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(178deg) scaleY(-1) scale(var(--z, 1));
+  }
+
+  .notes__body {
+    display: flex;
+    flex: 1 0 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+  }
+
+  .notes__heading { width: 100%; }
+
+  .notes__title {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 160px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .notes__intro {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .note-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  /* The rule sits inside the frame in Figma, so the 24px pad is split 23 + 1. */
+  .note {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding: 24px 0 23px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .note:first-child { padding-top: 0; }
+
+  .note__head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .note__title {
+    flex: 1 0 0;
+    min-width: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+  .note:first-child .note__title { letter-spacing: 0; }
+
+  .note__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62.627px;
+    height: 30.636px;
+    flex-shrink: 0;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .note__arrow img {
+    display: block;
+    width: 30.636px;
+    height: 62.627px;
+    transform: rotate(-90deg);
+  }
+  .note:hover .note__arrow { transform: translateX(8px); }
+
+  /* ---------- Footer ---------- */
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    padding: 96px var(--gutter) 40px;
+    background: var(--paper);
+  }
+
+  .footer__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 172px;
+    width: 100%;
+  }
+
+  .footer__main {
+    display: flex;
+    flex: 1 0 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .footer__cta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 100%;
+  }
+  .footer__blurb {
+    flex: 0 1 362px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .footer__wordmark {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 240px;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  .footer__wordmark span { flex-shrink: 0; }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    gap: 16px;
+    width: 91px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: right;
+  }
+  .footer__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: 0 1px;
+    transition: background-size 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .footer__links a:hover { background-size: 100% 1px; }
+
+  /* The site's own arrow, turned up-right beside a label that leaves the site.
+     The source glyph points down, so the buttons' -90deg lays it flat and -135
+     lifts it to the diagonal. The box is square because a rotated element keeps
+     its pre-rotation footprint. */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .link-arrow img {
+    display: block;
+    width: 7px;
+    height: 14px;
+    transform: rotate(-135deg);
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  /* A small nudge along its own diagonal on hover. */
+  .footer__links a:hover .link-arrow img { transform: rotate(-135deg) translateY(-3px); }
+
+  /* ---------- Motion ---------- */
+
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 96px; }
+
+  /* A hairline appears under the navbar once it lifts off the top of the page. */
+  .navbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .navbar.is-stuck::after { opacity: 0.14; }
+
+  /* Case-study and article artwork eases in behind its frame on hover. The zoom
+     rides a custom property so it composes with each crop's own transform. */
+  .work__media img,
+  .notes__media img { transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .work:hover { --z: 1.045; }
+  .notes__media:hover { --z: 1.045; }
+
+  .work__media { transition: box-shadow 400ms ease; }
+  .work:hover .work__media { box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.55); }
+
+  .note__title { transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .note:hover .note__title { transform: translateX(6px); }
+
+  /* Tilted cards lift and square up a touch under the cursor; the avatar keeps
+     its counter-rotation so it stays upright throughout. */
+  .quote { transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+                       box-shadow 450ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .quote-slot:hover { z-index: 2; }
+  .quote-slot:hover .quote { box-shadow: 0 24px 50px -30px rgba(14, 14, 12, 0.55); }
+  .quote-slot:nth-child(1):hover .quote { transform: rotate(-2.5deg) scale(1.035); }
+  .quote-slot:nth-child(2):hover .quote { transform: rotate(2.5deg) scale(1.035); }
+  .quote-slot:nth-child(3):hover .quote { transform: rotate(-2.5deg) scale(1.035); }
+  .quote-slot { position: relative; }
+
+  .works__title > span,
+  .testimonials__title > span,
+  .notes__title > span { display: block; }
+
+  /* Hero wordmark: each letter rides up out of its own clip box, staggered
+     across the word. overflow on an inline-block moves its baseline to the
+     bottom edge, so vertical-align is pinned to keep the line where it was. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .headline .char {
+      display: inline-block;
+      overflow: clip;
+      vertical-align: bottom;
+    }
+    .js .headline .char > i {
+      display: inline-block;
+      font-style: inherit;
+      transform: translateY(115%);
+      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--cd, 0ms);
+    }
+    .js .headline.is-in .char > i { transform: translateY(0); }
+  }
+
+  /* Reveals only exist when scripting is on and the reader hasn't asked for less
+     motion, so the resting layout is always the reference layout. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal] {
+      transition:
+        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+        clip-path 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
+    }
+
+    .js [data-reveal="rise"] {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+
+    /* Display type wipes upward out of its own box. Negative insets at rest mean
+       the finished state clips nothing. */
+    .js [data-reveal="mask"] {
+      clip-path: inset(-35% -12% 105% -12%);
+      transform: translateY(0.1em);
+    }
+
+    .js [data-reveal].is-in {
+      opacity: 1;
+      transform: none;
+      clip-path: inset(-35% -12% -35% -12%);
+    }
+  }
+
+
+  /* ---------- About page ---------- */
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 64px var(--gutter) 160px;
+    background: var(--paper);
+  }
+
+  .about-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+    width: 100%;
+  }
+
+  .about-hero__lead {
+    /* The frame sets this at 1039 of its 1360 column, which in the browser wraps
+       a word earlier than it does in Figma - leaving the first line 87px short
+       and the block lopsided above a full-width photo. It spans the column
+       instead, the same as the hero text on every other page. */
+    width: 100%;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .about-hero__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1360 / 720;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  /* 1365x909 photo seated at (-2, -23) in the 1360x720 frame, as percentages
+     so the crop holds at any width. */
+  .about-hero__media img {
+    position: absolute;
+    left: 50.03676%;
+    top: 59.93056%;
+    width: 100.36765%;
+    height: 126.25%;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(var(--z, 1));
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .about-hero__media:hover { --z: 1.03; }
+
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 80px;
+    width: 100%;
+  }
+
+  /* The 1px rule sits inside the frame in Figma, so 80px of padding is 79 + 1. */
+  .about-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 79px;
+    border-bottom: 1px solid rgba(14, 14, 12, 0.3);
+  }
+
+  .about-section__label {
+    flex-shrink: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+
+  .about-section__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap: 24px;
+    width: 904px;
+    max-width: 100%;
+  }
+  .about-section__content p {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .about-section__content .about-note {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .experience__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+  /* Rows after the first carry no label, so the description hugs the right edge. */
+  .experience__row--continued { justify-content: flex-end; }
+
+  .experience__label {
+    flex-shrink: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+
+  .experience__desc {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 908px;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .experience__year {
+    flex-shrink: 0;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .experience__detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap: 8px;
+    width: 496px;
+    max-width: 100%;
+  }
+  .experience__role {
+    width: 100%;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .experience__summary {
+    width: 100%;
+    font-weight: 400;
+  }
+
+
+  /* ---------- Case study ---------- */
+
+  .case {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 56px var(--gutter) 160px;
+    background: var(--paper);
+  }
+
+  /* Figma pins the contents list to the top of the column; on a page this long
+     it is only useful if it travels, so it sticks below the navbar. */
+  .case-toc {
+    position: sticky;
+    top: 102px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 240px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .case-toc a {
+    width: 100%;
+    font-weight: 400;
+    color: var(--ink);
+    opacity: 0.5;
+    transition: opacity 200ms ease, color 200ms ease;
+  }
+  .case-toc a:hover { opacity: 1; }
+  .case-toc a.is-active {
+    font-weight: 700;
+    color: #0f4d2e;
+    opacity: 1;
+  }
+
+  .case-body {
+    display: flex;
+    flex: 1 0 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 80px;
+  }
+
+  .case-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    scroll-margin-top: 120px;
+  }
+
+  .case-h2 {
+    width: 100%;
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .case-lead {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  
+
+  .case-prose {
+    --prose-lh: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    /* 20px, the size the Heroshe, Pharma Plus, LearnAM and Scape Health frames
+       set their body copy at. Procure's frame is older and draws it at 18, which
+       left one case study reading a size smaller than the other four. */
+    font-size: 16px;
+  }
+  .case-prose p {
+    width: 100%;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: var(--prose-lh);
+  }
+
+  /* A 20px stack that sits outside .case-prose so the 18px rule cannot win on
+     specificity. */
+  .case-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+  }
+
+  /* --- Intro --- */
+
+  .case-intro { gap: 40px; }
+
+  .case-intro__head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .case-title {
+    width: 100%;
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .case-intro__text {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .case-intro__media {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+  }
+
+  /* --- Screenshot frames ---
+     A full-width 480px band on ink. Children keep the exact pixel sizes Figma
+     gives and are placed by their offset from the frame centre, so the
+     composition holds whatever width the column ends up. */
+  .case-shot {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .case-shot > * {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: none;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .case-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .case-shot .shot-rounded { border-radius: 8px; overflow: hidden; }
+
+  /* The blurred plate behind every product shot. Needs to outrank the
+     `.case-shot img` sizing rule, hence the doubled selector. */
+  .case-shot img.shot-backdrop {
+    left: calc(50% + 68px);
+    top: calc(50% - 283px);
+    width: 1740px;
+    height: 1160px;
+    opacity: 0.3;
+    filter: blur(6px);
+  }
+
+  .case-shot--hero .shot-hero { left: calc(50% - 0.5px); top: calc(50% + 139px); width: 1147px; height: 858px; }
+
+  .case-shot--context .shot-web { left: calc(50% + 0.5px); top: 50%; width: 771px; height: 440px; }
+  .case-shot--context .shot-web img { height: 115.37%; top: -0.02%; position: absolute; left: 0; }
+
+  .case-shot--storelist .shot-web    { left: calc(50% - 109px); top: calc(50% - 0.97px); width: 606px; height: 438px; }
+  .case-shot--storelist .shot-web img { height: 103.44%; top: 0.02%; position: absolute; left: 0; }
+  .case-shot--storelist .shot-mobile { left: calc(50% + 310px); top: calc(50% - 0.47px); width: 202px; height: 437px; }
+
+  .case-shot--buyforme1 .shot-web    { left: calc(50% - 101px); top: calc(50% + 0.03px); width: 712px; height: 436px; }
+  .case-shot--buyforme1 .shot-mobile { left: calc(50% + 364px); top: calc(50% - 0.47px); width: 186px; height: 437px; }
+
+  .case-shot--buyforme2 .shot-web    { left: calc(50% - 101px); top: calc(50% - 0.97px); width: 698px; height: 436px; }
+  .case-shot--buyforme2 .shot-mobile { left: calc(50% + 357px); top: calc(50% - 0.47px); width: 186px; height: 437px; }
+
+  .case-shot--agent .shot-web        { left: calc(50% - 98.5px); top: calc(50% - 0.47px); width: 539px; height: 437px; }
+  .case-shot--agent .shot-mobile     { left: calc(50% + 277px); top: calc(50% - 0.47px); width: 180px; height: 437px; }
+  .case-shot--agent .shot-mobile img { height: 156.75%; top: 0; left: -0.02%; width: 100.05%; position: absolute; }
+
+  /* --- Standalone figures (no ink plate) --- */
+
+  .case-figure {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .case-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    pointer-events: none;
+  }
+  .case-figure--challenge { aspect-ratio: 959 / 303.972; }
+  .case-figure--challenge img {
+    position: absolute;
+    left: -3.25%;
+    top: -41%;
+    width: 103.25%;
+    height: 141%;
+  }
+  .case-figure--reflection { aspect-ratio: 960 / 470; border-radius: 0; }
+
+  /* --- Challenge bullets --- */
+
+  .case-points {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .case-points p {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .case-points b { font-weight: 600; }
+
+  /* --- Meta row --- */
+
+  .case-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .case-meta__group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+  .case-meta__group dt { width: 100%; font-weight: 700; }
+  .case-meta__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .case-meta__group dd { width: 100%; margin: 0; font-weight: 400; }
+
+  /* --- Comparison table --- */
+  /* Figma lets the table hug its content (929px of a 960px column) rather than
+     stretch, so the columns size to their widest cell. */
+  .case-table {
+    display: flex;
+    align-items: stretch;
+    width: fit-content;
+    max-width: 100%;
+    border: 1px solid rgba(14, 14, 12, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .case-table__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+  .case-table__col:first-child { width: 400px; flex-shrink: 0; }
+  .case-table__head,
+  .case-table__cell {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 24px 11px;
+    border-bottom: 1px solid rgba(14, 14, 12, 0.3);
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+  .case-table__head {
+    height: 44px;
+    background: #0f4d2e;
+    color: var(--paper);
+    font-weight: 700;
+  }
+  .case-table__cell { font-weight: 400; }
+
+  /* --- Bordered note cards --- */
+
+  .case-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding: 23px;
+    border: 1px solid rgba(14, 14, 12, 0.3);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .case-card__title { width: 100%; font-weight: 700; }
+  .case-card p { width: 100%; font-weight: 400; }
+
+  /* --- Decision list --- */
+
+  .case-decisions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .case-decision {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .case-decision__title { width: 100%; font-weight: 600; }
+  .case-decision p { width: 100%; font-weight: 400; }
+
+  /* --- Solution blocks --- */
+
+  .case-solutions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+    width: 100%;
+  }
+  .case-solution {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .case-solution__title {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .case-solution__text {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .case-solution__stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+  }
+
+  /* --- Impact grid --- */
+  /* 472px cards pair up to fill Figma's 960 column; here they share the row. */
+  .case-impact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .case-impact__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+    gap: 8px;
+    height: 208px;
+    padding: 23px;
+    border: 1px solid rgba(14, 14, 12, 0.3);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .case-impact__icon { flex-shrink: 0; width: 24px; height: 24px; }
+  .case-impact__icon img { display: block; width: 100%; height: 100%; }
+  .case-impact__figure { font-weight: 700; white-space: nowrap; }
+  .case-impact__card p { width: 100%; font-weight: 400; }
+
+  /* --- Reflection --- */
+
+  .case-reflection {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .case-reflection p { width: 100%; }
+  .case-reflection b { font-weight: 700; }
+
+
+  /* --- Heroshe Website case study --- */
+
+  /* This study runs a narrower contents rail than Procure. */
+  .case-toc--narrow { width: 160px; }
+
+  /* A borderless text link with the shared arrow, used for "View The Site". */
+  .case-textlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  .case-textlink .btn__icon { transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .case-textlink:hover .btn__icon { transform: translateX(6px); }
+
+  /* Screens on this study sit on a sand plate rather than the ink one. */
+  .case-plate {
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--sand);
+  }
+  .case-plate img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+  .case-plate__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  /* Two of the plates crop their screenshot rather than showing it whole. */
+  .case-crop { position: relative; overflow: hidden; }
+  .case-crop img { position: absolute; left: 0; top: 0; }
+
+  .case-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    /* 960 was the full width of the frame's body column (1280 less the 160px
+       index and its 160px gap). Ours is 1040, so this spans rather than stops. */
+    width: 100%;
+  }
+
+  /* Blank paragraphs carry the rhythm in Figma; here the gap does it. */
+  .case-prose--lg { font-size: 16px; --prose-lh: 1.6; }
+  /* The case-study intros, at the 16px the frames specify. */
+  .case-prose--16 { font-size: 16px; --prose-lh: 1.6; }
+  /* Must follow --lg so it can raise the leading back to 1.6. */
+  .case-prose--loose { --prose-lh: 1.6; }
+  /* One blank line between paragraphs, measured from the prose's own leading. */
+  .case-prose--spaced { gap: calc(1em * var(--prose-lh)); }
+  /* Consecutive paragraphs with no blank line between them. */
+  .case-prose--flush { gap: 0; }
+
+  .case-list {
+    width: 100%;
+    margin: 0;
+    padding-left: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .case-list li { width: 100%; }
+  .case-list--num { list-style: decimal; }
+  .case-list b { font-weight: 700; }
+
+  .case-numbered {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+  }
+  .case-numbered__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+  .case-decision-head {
+    width: 100%;
+    margin: 0 0 0 0;
+    padding-left: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    list-style: decimal;
+  }
+  .case-decision-head li { font-weight: 700; }
+
+  /* --- Pharma Plus case study --- */
+
+  /* Phone screens sit in a row on the sand plate. Widths are percentages of the
+     plate's inner box so a 3-up row fills it and a 2-up row stays centred at
+     its natural size, exactly as Figma lays them out. */
+  .case-phones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+  }
+  .case-phones img {
+    height: auto;
+    flex-shrink: 0;
+  }
+  .case-phones--tall img { width: 30.7%; }
+  .case-phones--short img { width: 21%; }
+
+  /* Bullets whose lead-in is bold and whose body continues on the same line. */
+  .case-points-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    margin: 0;
+    padding-left: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .case-points-list li { width: 100%; }
+  .case-points-list--tight { gap: 16px; }
+  /* Figma sets the usability findings a size down from the research bullets,
+     with the marker indent scaled to match. */
+  .case-points-list--sm { padding-left: 27px; }
+  .case-prose--loose .case-points-list { line-height: 1.6; }
+  .case-points-list b { font-weight: 700; }
+
+  /* --- Scape Health case study --- */
+
+  /* The plates sit their screens deeper than the default 20px: the hero row at
+     40px, and the decision rows at 47px, which is the 740px plate the frame
+     draws around a 646px screen. */
+  .case-plate--row { padding: 40px 20px; }
+  .case-plate--phones { padding: 47px 20px; }
+
+  /* Four screens across one plate. Widths are percentages of the plate's inner
+     box, as the three-up rows are: 220 of 1000. */
+  .case-phones--quad { gap: 36px; }
+  .case-phones--quad img { width: 22%; }
+
+  /* A research bullet and the participant quote that evidences it. */
+  .case-finding {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* Each decision carries a full-height plate, so they need more air between
+     them than the stacked decisions on the other case studies. */
+  .case-decisions--spaced { gap: 80px; }
+
+  /* --- LearnAM case study --- */
+
+  /* Before/after comparisons: stages of phone screens with an arrow between
+     and a caption under each. Figma hand-places these; here each stage is a
+     column so the arrow and caption stay tied to their own group. */
+  .lam-compare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+  }
+  .lam-compare--tight { gap: 16px; }
+
+  .lam-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 24px;
+  }
+
+  .lam-shots {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .lam-compare--tight .lam-shots { gap: 8px; }
+  .lam-shots--top { align-items: flex-start; }
+  .lam-shots img { display: block; height: auto; flex-shrink: 0; }
+
+  .lam-arrow { flex: 0 0 41px; width: 41px; height: 20px; }
+  .lam-arrow img { display: block; width: 100%; height: 100%; }
+
+  .lam-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .lam-caption b { font-weight: 600; }
+  .lam-caption span { display: block; font-weight: 400; }
+
+  /* Figures that carry their own rounding instead of sitting on a plate. */
+  .lam-figure,
+  .case-figure { width: 100%; border-radius: 16px; overflow: hidden; }
+  .lam-figure img,
+  .case-figure img { display: block; width: 100%; height: auto; }
+
+  .case-link-inline {
+    color: #0f4d2e;
+    text-decoration: underline;
+    text-underline-position: from-font;
+  }
+
+  /* --- Next case study --- */
+
+  .next-case {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+    padding: 160px var(--gutter);
+    background: var(--paper);
+  }
+  .next-case__title {
+    width: 100%;
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 160px;
+    line-height: 0.96;
+    letter-spacing: 0;
+  }
+
+  /* The preview row on a case study is taller-set than the one on the homepage:
+     larger type throughout, a 369x320 media block, and no dividing rule. */
+  .work.work--next {
+    align-items: flex-start;
+    padding-bottom: 0;
+    border-bottom: 0;
+    color: var(--ink);
+  }
+  .work--next .tag { border-color: rgba(14, 14, 12, 0.5); font-size: 14px; }
+  .work--next .work__client { font-size: 14px; }
+  .work--next .work__name { font-size: 16px; }
+  .work--next .work__body p { font-size: 16px; }
+  .work--next .work__media {
+    flex: 0 1 369px;
+    aspect-ratio: 369 / 320;
+    background: var(--paper);
+  }
+  /* Scoped to the website mockup: Figma gives it its own crop in the next-case
+     block. The other mockups keep their percentage crops, which carry over
+     unchanged because 369x320 and 415x360 are the same aspect. */
+  .work--next .work__media--website img {
+    left: calc(50% + 8.5px);
+    top: 50%;
+    width: 600px;
+    height: 450px;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  /* The desktop composition is the reference 1440px canvas: a 1360px content box
+     inside the --gutter margin, centred on anything wider so it never stretches.
+     Below 1440 the box shrinks with the window instead of forcing the page
+     sideways - the arrangement is unchanged, just narrower - and max() keeps the
+     gutter from collapsing once the window is under the reference width.
+     Section backgrounds still run full-bleed. */
+  @media (min-width: 1100px) {
+    .navbar,
+    .hero,
+    .works,
+    .testimonials,
+    .notes,
+    .about,
+    .case,
+    .next-case,
+    .footer {
+      padding-left: max(var(--gutter), calc((100% - (1440px - 2 * var(--gutter))) / 2));
+      padding-right: max(var(--gutter), calc((100% - (1440px - 2 * var(--gutter))) / 2));
+    }
+
+    /* MARTHA + ADELEKE is 4.178em of Kaneda at zero tracking, plus the 36px gap,
+       and the frame runs it the full width of the content column. Sizing it off
+       the column (cqw) keeps it flush at both gutters at every width in this
+       tier: 317px against our 1360px column, where the frame's 308px suited its
+       1280px one. Browsers without container units fall back to 308px. */
+    .headline {
+      font-size: min(317px, calc((100cqw - 36px) / 4.178));
+    }
+    /* The wordmark is not a full-bleed lockup - the frame sets it at 240px in a
+       1280 column, well short of the edge - so it only needs to stop outgrowing
+       a narrow column. 17px of that is scrollbar, which 100vw ignores. */
+    .footer__wordmark {
+      font-size: min(240px, calc((100vw - 2 * var(--gutter) - 40px - 17px) / 4.19));
+    }
+  }
+
+  /* Between the reference canvas and the stacked layout, the LearnAM comparison
+     plates are composed at fixed pixel sizes and are the one block that cannot
+     narrow. It scrolls inside its own box rather than widening the page; left
+     alignment keeps the overflow reachable, which centring would not. */
+  @media (min-width: 1100px) and (max-width: 1439px) {
+    .lam-compare {
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* The card row is 1252px of slots that refuse to shrink, so in a column
+       narrower than the reference the section's overflow:hidden was quietly
+       cropping the third card. The slots share the column instead, and a
+       narrower card is allowed to grow taller rather than lose its last line. */
+    .quote-slot {
+      flex: 1 1 0;
+      width: auto;
+      min-width: 0;
+      height: auto;
+      min-height: 289.264px;
+    }
+    .quote {
+      width: 100%;
+      height: auto;
+      min-height: 262px;
+    }
+  }
+
+  @media (max-width: 1099px) {
+    :root { --gutter: 24px; --nav-h: 64px; }
+
+    /* Laid out flat the nav needs three rows - a fifth of a phone screen - so it
+       collapses into one 64px bar: name on the left, toggle on the right, and the
+       four links, the address and the CTA in a drop panel. The bar stays pinned. */
+    .navbar {
+      /* Fixed rather than sticky: locking the page scroll while the panel is open
+         takes the scroll container away from a sticky bar, which drops it back to
+         the top of the document - taking the close button off screen with it. */
+      position: fixed;
+      left: 0;
+      right: 0;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px var(--gutter);
+    }
+    /* The fixed bar is out of flow, so the page keeps its own height. */
+    body { padding-top: var(--nav-h); }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      /* 40px of touch area, pulled out so the glyph still sits on the gutter. */
+      width: 40px;
+      height: 40px;
+      margin-right: -9px;
+      padding: 0;
+      background: none;
+      border: 0;
+      color: var(--ink);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-toggle__box { position: relative; width: 22px; height: 14px; }
+    .nav-toggle__bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-toggle__bar:first-child { top: 0; }
+    .nav-toggle__bar:last-child { bottom: 0; }
+    /* Both bars travel to the middle of the box and cross. */
+    .navbar.is-open .nav-toggle__bar:first-child { transform: translateY(6px) rotate(45deg); }
+    .navbar.is-open .nav-toggle__bar:last-child { transform: translateY(-6px) rotate(-45deg); }
+
+    .nav-panel {
+      position: fixed;
+      top: var(--nav-h);
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px var(--gutter) calc(40px + env(safe-area-inset-bottom));
+      background: var(--paper);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      /* visibility keeps the closed panel out of the tab order, and its delay
+         holds the element around long enough for the closing transition. */
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 220ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0s linear 280ms;
+    }
+    .navbar.is-open .nav-panel {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      transition: opacity 200ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0s;
+    }
+    /* The panel covers the page, so the page behind it must not scroll with it. */
+    html.nav-open, html.nav-open body { overflow: hidden; }
+
+    /* Without scripting nothing can work the toggle, so the bar falls back to the
+       flat wrapped layout it had before the drop panel existed: every link on the
+       page, nothing hidden behind a control that cannot move. */
+    html:not(.js) body { padding-top: 0; }
+    html:not(.js) .navbar { position: static; flex-wrap: wrap; gap: 16px 24px; }
+    html:not(.js) .nav-brand,
+    html:not(.js) .nav-toggle { display: none; }
+    html:not(.js) .nav-panel {
+      position: static;
+      flex: 1 1 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 24px;
+      padding: 0;
+      overflow: visible;
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+    }
+    html:not(.js) .nav-panel .nav-menu { flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; gap: 24px; }
+    html:not(.js) .nav-panel .nav-link { padding: 0; font-size: 14px; border-bottom: 0; }
+    html:not(.js) .nav-panel .nav-cta { align-self: auto; margin-top: 0; margin-left: auto; }
+
+    /* The menu still has to open and close for a reader who wants less motion -
+       it just does it without the fade, the slide or the crossing bars. */
+    @media (prefers-reduced-motion: reduce) {
+      .nav-panel,
+      .navbar.is-open .nav-panel,
+      .nav-toggle__bar { transition: none; }
+      .nav-panel { transform: none; }
+    }
+
+    .nav-panel .nav-menu {
+      flex: 0 0 auto;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+    }
+    .nav-panel .nav-link {
+      justify-content: flex-start;
+      padding: 18px 2px;
+      font-size: 20px;
+      letter-spacing: 0;
+      border-bottom: 1px solid rgba(14, 14, 12, 0.14);
+      /* The hover underline sweep reads as a glitch on a full-width row. */
+      background-image: none;
+    }
+    .nav-panel .nav-cta { align-self: stretch; margin-top: 24px; }
+
+    /* Anchors have to clear the pinned bar. */
+    section[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
+
+    .hero { gap: 56px; padding-bottom: 96px; }
+    /* The tagline is centred on the reference canvas because it sits under a
+       wordmark that spans the full column. In a narrow column there is nothing
+       to centre against, so it joins the gutter line like everything else. */
+    .tagline { justify-content: flex-start; padding: 0; }
+    .tagline p { white-space: normal; }
+
+    .content { flex-direction: column; align-items: flex-start; gap: 32px; }
+    .feature { flex: 0 0 auto; width: 100%; }
+    .feature__label { max-width: none; }
+    .stats p { white-space: normal; }
+    .media { order: -1; flex: 0 0 auto; width: 100%; }
+
+    /* Kaneda Gothic sets MARTHA at 2.013em and ADELEKE at 2.035em, so the pair is
+       4.178em wide on top of the 36px gap. Taking the gap off the column and
+       dividing by that - rather than scaling the reference 308/1280 ratio, which
+       overruns the gutter by ~7px - keeps the lockup flush at every width here.
+       The divisor carries a hair over 4.178 to absorb subpixel rounding. */
+    .headline { font-size: min(308px, calc((100vw - 2 * var(--gutter) - 36px) / 4.19)); }
+    .works__title,
+    .testimonials__title,
+    .notes__title { font-size: min(160px, calc((100vw - 2 * var(--gutter)) * 0.125)); }
+
+    .works { padding: 96px var(--gutter); }
+    .works__inner { gap: 40px; }
+    .work { flex-wrap: wrap; gap: 24px; }
+    .work__col, .work__body { flex: 1 1 260px; }
+    .work__media { order: -1; flex: 1 1 100%; }
+
+    .testimonials { gap: 40px; padding: 96px var(--gutter); }
+    /* Left like SELECTED WORKS and FIELD NOTES once the cards stack. */
+    .testimonials__title { width: 100%; text-align: left; }
+    /* Cards are a fixed 400px wide by design; stack and let them fill instead. */
+    .quotes { flex-direction: column; align-items: center; width: 100%; gap: 32px; }
+    .quote-slot { width: 100%; height: auto; }
+    .quote { width: 100%; max-width: 400px; height: auto; min-height: 262px; transform: none; }
+    .quote-slot:nth-child(1) .quote,
+    .quote-slot:nth-child(2) .quote,
+    .quote-slot:nth-child(3) .quote { transform: none; }
+    .quote-slot:nth-child(1) .avatar,
+    .quote-slot:nth-child(2) .avatar,
+    .quote-slot:nth-child(3) .avatar { transform: none; }
+    .quote__avatar { width: 48px; height: 48px; }
+
+    .notes { flex-direction: column; gap: 40px; padding: 96px var(--gutter); }
+    .notes__media { flex: 0 0 auto; width: 100%; }
+    .notes__body { flex: 0 0 auto; width: 100%; gap: 40px; }
+    .note__title { font-size: 18px; }
+    .note__arrow { width: 40px; height: 19.57px; }
+    .note__arrow img { width: 19.57px; height: 40px; }
+
+    .about { gap: 48px; padding: 40px var(--gutter) 96px; }
+    .about-hero { gap: 32px; }
+    .about-hero__lead { width: 100%; font-size: 22px; }
+    .about-body { gap: 48px; }
+    .about-section { flex-direction: column; gap: 24px; padding-bottom: 47px; }
+    .about-section__content { width: 100%; gap: 20px; }
+    .experience { gap: 32px; }
+    .experience__row,
+    .experience__row--continued { flex-direction: column; gap: 16px; justify-content: flex-start; }
+    .experience__desc { flex-direction: column; gap: 8px; width: 100%; }
+    .experience__detail { width: 100%; }
+
+    .case { flex-direction: column; gap: 32px; padding: 32px var(--gutter) 64px; }
+    .case-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px 20px; width: 100%; font-size: 14px; }
+    /* The desktop column stretches each link; in a wrapped row they must hug. */
+    .case-toc a { width: auto; }
+    /* .case turns column here, so flex-basis governs height and the cross axis
+       falls back to content width. Without this the body grows to its widest
+       child (the phone row) and drags the page past the viewport. */
+    .case-body { gap: 48px; width: 100%; min-width: 0; }
+    .case-title { font-size: 32px; }
+    .case-h2 { font-size: 28px; }
+    .case-intro__head { width: 100%; }
+    .case-meta { flex-wrap: wrap; gap: 24px 32px; }
+    .case-table { flex-direction: column; }
+    .case-table__head, .case-table__cell { height: auto; }
+    .case-impact__card { width: 100%; height: auto; }
+    .case-solutions { gap: 40px; }
+    /* Same reasoning as the phone rows below: these comparisons are composed at
+       fixed pixel sizes, so let them scroll rather than crush. */
+    .lam-compare {
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+    }
+    .lam-shots { gap: 12px; }
+    .lam-compare--tight .lam-shots { gap: 6px; }
+
+    /* Three or four phones across a 303px plate would be ~95px each, far too
+       small to read, and the fixed gap pushes them past the edge. On phones the
+       row scrolls instead, so each screen stays legible. */
+    .case-phones {
+      gap: 12px;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .case-phones--tall img,
+    .case-phones--short img,
+    .case-phones--quad img {
+      width: auto;
+      height: 420px;
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+    }
+    .case-points-list { gap: 16px; }
+
+    .case-toc--narrow { width: 100%; }
+    .case-head { width: 100%; }
+    .case-plate { padding: 12px; border-radius: 12px; }
+    .case-plate__grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+
+    .next-case { gap: 32px; padding: 96px var(--gutter); }
+    .next-case__title { font-size: min(160px, calc((100vw - 2 * var(--gutter)) * 0.125)); }
+
+    .case { flex-direction: column; gap: 32px; padding: 32px var(--gutter) 64px; }
+    .case-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px 20px; width: 100%; font-size: 14px; }
+    .case-toc a { width: auto; }
+    .case-body { gap: 48px; }
+    .case-title { font-size: 32px; }
+    .case-h2 { font-size: 28px; }
+    .case-meta { flex-wrap: wrap; gap: 24px 32px; }
+    .case-table { flex-direction: column; width: 100%; }
+    .case-table__col:first-child { width: 100%; }
+    .case-table__head, .case-table__cell { height: auto; white-space: normal; }
+    .case-impact__card { flex: 1 1 100%; height: auto; }
+    .case-solutions { gap: 40px; }
+
+    /* The bands compose a desktop shot beside a phone shot at fixed pixel sizes
+       and fixed offsets from centre. Neither survives a narrow column, so on
+       phones the band shows the desktop shot centred and drops the phone one. */
+    .case-shot { height: auto; aspect-ratio: 960 / 480; }
+    .case-shot .shot-mobile { display: none; }
+    .case-shot img.shot-backdrop { left: 50%; top: 50%; width: 160%; height: 160%; }
+    .case-shot--hero .shot-hero,
+    .case-shot--context .shot-web,
+    .case-shot--storelist .shot-web,
+    .case-shot--buyforme1 .shot-web,
+    .case-shot--buyforme2 .shot-web,
+    .case-shot--agent .shot-web {
+      left: 50%;
+      top: 50%;
+      width: auto;
+      height: 84%;
+    }
+    .case-shot--hero .shot-hero      { width: 118%; height: auto; aspect-ratio: 1147 / 858; }
+    .case-shot--context .shot-web    { aspect-ratio: 771 / 440; }
+    .case-shot--storelist .shot-web  { aspect-ratio: 606 / 438; }
+    .case-shot--buyforme1 .shot-web  { aspect-ratio: 712 / 436; }
+    .case-shot--buyforme2 .shot-web  { aspect-ratio: 698 / 436; }
+    .case-shot--agent .shot-web      { aspect-ratio: 539 / 437; }
+
+    .next-case { gap: 32px; padding: 96px var(--gutter); }
+    .next-case__title { font-size: min(160px, calc((100vw - 2 * var(--gutter)) * 0.125)); }
+    .work--next .work__media { flex: 1 1 100%; }
+
+    .footer {
+      padding: 64px var(--gutter) calc(40px + env(safe-area-inset-bottom));
+    }
+
+    /* Dropping .footer__main out of the layout makes the CTA, the links and the
+       wordmark siblings of the row, so each can take its own place in the stack:
+       the ask first, the links next, the wordmark signing off at the bottom.
+       Side by side on desktop they have no order to disagree about. */
+    .footer__main { display: contents; }
+    .footer__row { flex-direction: column; align-items: stretch; gap: 36px; }
+
+    .footer__cta {
+      order: 1;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+    }
+    /* .footer__cta turns column here, so the 362px basis would become a height. */
+    .footer__blurb { flex: 0 0 auto; width: 100%; }
+    /* A full-width pill is the easiest target on a phone. */
+    .footer__cta .btn { align-self: stretch; }
+
+    .footer__links {
+      order: 2;
+      /* Three links, so a single column: in two columns the odd one left an
+         empty cell that read as a missing item. */
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
+      width: 100%;
+      gap: 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(14, 14, 12, 0.14);
+      font-size: 16px;
+      text-align: left;
+    }
+    /* Each row carries its own touch area, and the hover underline now grows
+       from the left to follow the text. */
+    .footer__links a { padding: 11px 0; background-position: 0 100%; }
+
+    .footer__wordmark {
+      order: 3;
+      font-size: min(240px, calc((100vw - 2 * var(--gutter) - 40px) / 4.19));
+    }
+
+    /* Stacked, a paragraph runs the whole column: about 120 characters at 900px
+       and 90 at tablet width, well past comfortable reading. Prose takes a
+       measure of roughly 70 instead - 32em of this face, not ch, whose zero is
+       far wider than the average letter here - while images, plates and tables
+       keep the full column. The cap regulates itself: on a phone the column is
+       narrower than 32em, so it never bites. These sit last in the block so they
+       outrank the rules above that set the same blocks to full width. */
+    .feature__label p,
+    .feature--right p,
+    .notes__intro,
+    .about-hero__lead,
+    .about-section__content p,
+    .about-note,
+    .experience__summary,
+    .footer__blurb,
+    .case-intro__text,
+    .case-lead,
+    .case-prose p,
+    .case-list li,
+    .case-points p,
+    .case-solution__text,
+    .case-decision__title,
+    .case-reflection p,
+    .case-decision p,
+    .case-card,
+    .case-points-list { max-width: 32em; }
+
+    /* The impact pair is drawn 2-up and above 900 there is room for it, which
+       beats two capped boxes stacked. Height follows the text at this width.
+       Narrower than that it stays stacked, as a half column would be unreadable. */
+    @media (min-width: 901px) {
+      .case-impact__card {
+        flex: 1 1 calc(50% - 8px);
+        height: auto;
+        min-height: 208px;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    .headline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      /* Stacked, so the longer of the two words governs: ADELEKE is 2.105em,
+         and the 2.15 divisor leaves it a couple of percent clear of the gutter. */
+      font-size: min(308px, calc((100vw - 2 * var(--gutter)) / 2.15));
+      margin-bottom: -8px;
+    }
+    .headline > span:first-child { flex: 0 0 auto; }
+
+    .footer__wordmark {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      /* Same lockup as the hero, so it takes the hero's leading: at 1 the words
+         sat 51px apart against the hero's 31px, which read as a gap rather than
+         a stack. Only the stacked band - a single line needs its own height. */
+      line-height: 0.88;
+      font-size: calc((100vw - 2 * var(--gutter)) / 2.15);
+    }
+  }
