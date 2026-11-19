@@ -2144,32 +2144,6 @@
       font-size: min(240px, calc((100vw - 2 * var(--gutter) - 40px) / 4.19));
     }
 
-    /* Stacked, a paragraph runs the whole column: about 120 characters at 900px
-       and 90 at tablet width, well past comfortable reading. Prose takes a
-       measure of roughly 70 instead - 32em of this face, not ch, whose zero is
-       far wider than the average letter here - while images, plates and tables
-       keep the full column. The cap regulates itself: on a phone the column is
-       narrower than 32em, so it never bites. These sit last in the block so they
-       outrank the rules above that set the same blocks to full width. */
-    .feature__label p,
-    .feature--right p,
-    .notes__intro,
-    .about-hero__lead,
-    .about-section__content p,
-    .about-note,
-    .experience__summary,
-    .footer__blurb,
-    .case-intro__text,
-    .case-lead,
-    .case-prose p,
-    .case-list li,
-    .case-points p,
-    .case-solution__text,
-    .case-decision__title,
-    .case-reflection p,
-    .case-decision p,
-    .case-card,
-    .case-points-list { max-width: 32em; }
 
     /* The impact pair is drawn 2-up and above 900 there is room for it, which
        beats two capped boxes stacked. Height follows the text at this width.
